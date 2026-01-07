@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import heroVideo from "@/assets/hero-video.mp4";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,29 @@ const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const targetTimeRef = useRef(0);
+  const currentTimeRef = useRef(0);
+  const rafRef = useRef<number>();
+
+  // Smooth interpolation function
+  const lerp = (start: number, end: number, factor: number) => {
+    return start + (end - start) * factor;
+  };
+
+  const animate = useCallback(() => {
+    const video = videoRef.current;
+    if (!video || !isVideoLoaded) return;
+
+    // Smoothly interpolate towards target time
+    currentTimeRef.current = lerp(currentTimeRef.current, targetTimeRef.current, 0.1);
+    
+    // Only update if difference is significant
+    if (Math.abs(video.currentTime - currentTimeRef.current) > 0.01) {
+      video.currentTime = currentTimeRef.current;
+    }
+
+    rafRef.current = requestAnimationFrame(animate);
+  }, [isVideoLoaded]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -17,12 +40,24 @@ const HeroSection = () => {
     const handleLoadedMetadata = () => {
       setIsVideoLoaded(true);
       video.pause();
+      video.currentTime = 0;
     };
 
     video.addEventListener("loadedmetadata", handleLoadedMetadata);
 
+    return () => {
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+    };
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const video = videoRef.current;
+
+    if (!container || !video || !isVideoLoaded) return;
+
     const handleScroll = () => {
-      if (!isVideoLoaded || !video.duration) return;
+      if (!video.duration) return;
 
       const rect = container.getBoundingClientRect();
       const scrollableHeight = container.offsetHeight - window.innerHeight;
@@ -31,17 +66,22 @@ const HeroSection = () => {
         1
       );
 
-      video.currentTime = scrollProgress * video.duration;
+      targetTimeRef.current = scrollProgress * video.duration;
     };
 
+    // Start animation loop
+    rafRef.current = requestAnimationFrame(animate);
+    
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => {
-      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
       window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
     };
-  }, [isVideoLoaded]);
+  }, [isVideoLoaded, animate]);
 
   return (
     <section ref={containerRef} className="relative h-[300vh] w-full">
@@ -53,7 +93,7 @@ const HeroSection = () => {
           muted
           playsInline
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover will-change-auto"
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
