@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import heroVideo from "@/assets/hero-video.mp4";
 import { Button } from "@/components/ui/button";
 
@@ -10,6 +10,19 @@ const HeroSection = () => {
   const targetTimeRef = useRef(0);
   const currentTimeRef = useRef(0);
   const rafRef = useRef<number>();
+  
+  const scrollProgress = useMotionValue(0);
+  
+  // Transform scroll progress for text animations
+  const textOpacity = useTransform(scrollProgress, [0, 0.3, 0.7, 1], [1, 1, 0.3, 0]);
+  const taglineOpacity = useTransform(scrollProgress, [0, 0.2], [1, 0]);
+  const descriptionOpacity = useTransform(scrollProgress, [0, 0.25], [1, 0]);
+  const buttonsOpacity = useTransform(scrollProgress, [0, 0.2], [1, 0]);
+  const textY = useTransform(scrollProgress, [0, 0.5], [0, -100]);
+  
+  // Word transition: "Moment" -> "MoFFee"
+  const momentOpacity = useTransform(scrollProgress, [0, 0.4, 0.5], [1, 1, 0]);
+  const moffeeOpacity = useTransform(scrollProgress, [0.4, 0.5, 1], [0, 1, 1]);
 
   // Smooth interpolation function
   const lerp = (start: number, end: number, factor: number) => {
@@ -21,7 +34,7 @@ const HeroSection = () => {
     if (!video || !isVideoLoaded) return;
 
     // Smoothly interpolate towards target time
-    currentTimeRef.current = lerp(currentTimeRef.current, targetTimeRef.current, 0.1);
+    currentTimeRef.current = lerp(currentTimeRef.current, targetTimeRef.current, 0.08);
     
     // Only update if difference is significant
     if (Math.abs(video.currentTime - currentTimeRef.current) > 0.01) {
@@ -61,12 +74,13 @@ const HeroSection = () => {
 
       const rect = container.getBoundingClientRect();
       const scrollableHeight = container.offsetHeight - window.innerHeight;
-      const scrollProgress = Math.min(
+      const progress = Math.min(
         Math.max(-rect.top / scrollableHeight, 0),
         1
       );
 
-      targetTimeRef.current = scrollProgress * video.duration;
+      scrollProgress.set(progress);
+      targetTimeRef.current = progress * video.duration;
     };
 
     // Start animation loop
@@ -81,10 +95,10 @@ const HeroSection = () => {
         cancelAnimationFrame(rafRef.current);
       }
     };
-  }, [isVideoLoaded, animate]);
+  }, [isVideoLoaded, animate, scrollProgress]);
 
   return (
-    <section ref={containerRef} className="relative h-[300vh] w-full">
+    <section ref={containerRef} className="relative h-[500vh] w-full">
       {/* Sticky Video Container */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         {/* Video Background */}
@@ -98,15 +112,19 @@ const HeroSection = () => {
           <source src={heroVideo} type="video/mp4" />
         </video>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 hero-overlay" />
+        {/* Lighter Overlay for better visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/20 via-charcoal/30 to-charcoal/60" />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+        <motion.div 
+          style={{ opacity: textOpacity, y: textY }}
+          className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6"
+        >
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
+            style={{ opacity: taglineOpacity }}
             className="text-gold-light text-sm tracking-[0.4em] uppercase mb-6"
           >
             Premium Craft Beverages
@@ -119,14 +137,30 @@ const HeroSection = () => {
             className="text-5xl md:text-7xl lg:text-8xl font-serif text-primary-foreground font-medium leading-tight max-w-4xl"
           >
             Elevate Every
-            <span className="block italic text-gold">Moment</span>
+            <span className="block italic relative">
+              {/* Moment text */}
+              <motion.span 
+                style={{ opacity: momentOpacity }}
+                className="text-gold absolute left-1/2 -translate-x-1/2"
+              >
+                Moment
+              </motion.span>
+              {/* MoFFee text */}
+              <motion.span 
+                style={{ opacity: moffeeOpacity }}
+                className="text-gold"
+              >
+                MoFFee
+              </motion.span>
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-8 text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed"
+            style={{ opacity: descriptionOpacity }}
+            className="mt-8 text-lg md:text-xl text-primary-foreground/80 max-w-xl leading-relaxed"
           >
             Discover our exquisite collection of handcrafted beverages,
             made with the finest ingredients from around the world.
@@ -136,6 +170,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
+            style={{ opacity: buttonsOpacity }}
             className="mt-10 flex flex-col sm:flex-row gap-4"
           >
             <Button variant="hero" size="lg">
@@ -145,13 +180,14 @@ const HeroSection = () => {
               Our Story
             </Button>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
+          style={{ opacity: taglineOpacity }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
         >
           <motion.div
