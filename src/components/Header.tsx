@@ -1,9 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const heroHeight = window.innerHeight;
+      setIsScrolled(scrollPosition > heroHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Check initial state
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const navLinks = [
     { name: "Collection", href: "#collection" },
@@ -13,17 +29,25 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <nav className="container mx-auto px-6 py-6">
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      <nav
+        className={`container mx-auto px-6 py-6 transition-all duration-300 ${
+          isScrolled
+            ? "bg-background/80 backdrop-blur-md shadow-sm"
+            : "bg-transparent"
+        }`}
+      >
         <div className="flex items-center justify-between">
           <motion.a
             href="#"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-2xl font-serif font-semibold text-primary-foreground tracking-wide"
+            className={`text-2xl font-serif font-semibold tracking-wide transition-colors duration-300 ${
+              isScrolled ? "text-foreground" : "text-primary-foreground"
+            }`}
           >
-            AURUM
+            MOFFEE
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -37,7 +61,11 @@ const Header = () => {
               <li key={link.name}>
                 <a
                   href={link.href}
-                  className="text-primary-foreground/80 hover:text-primary-foreground text-sm font-medium tracking-widest uppercase transition-colors duration-300"
+                  className={`text-sm font-medium tracking-widest uppercase transition-colors duration-300 ${
+                    isScrolled
+                      ? "text-foreground/80 hover:text-foreground"
+                      : "text-primary-foreground/80 hover:text-primary-foreground"
+                  }`}
                 >
                   {link.name}
                 </a>
@@ -48,7 +76,9 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-primary-foreground p-2"
+            className={`md:hidden p-2 transition-colors duration-300 ${
+              isScrolled ? "text-foreground" : "text-primary-foreground"
+            }`}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -69,7 +99,11 @@ const Header = () => {
                     <a
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="text-primary-foreground/80 hover:text-primary-foreground text-sm font-medium tracking-widest uppercase transition-colors"
+                      className={`text-sm font-medium tracking-widest uppercase transition-colors ${
+                        isScrolled
+                          ? "text-foreground/80 hover:text-foreground"
+                          : "text-primary-foreground/80 hover:text-primary-foreground"
+                      }`}
                     >
                       {link.name}
                     </a>

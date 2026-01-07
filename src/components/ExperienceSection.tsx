@@ -37,7 +37,7 @@ const ExperienceSection = () => {
             The Experience
           </span>
           <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-serif text-charcoal">
-            Why Choose <span className="italic text-primary">Aurum</span>
+            Why Choose <span className="italic text-primary">MoFFee</span>
           </h2>
         </motion.div>
 

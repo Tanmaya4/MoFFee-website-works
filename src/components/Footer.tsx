@@ -13,7 +13,7 @@ const Footer = () => {
           className="grid grid-cols-1 md:grid-cols-4 gap-12"
         >
           <div className="md:col-span-2">
-            <h3 className="text-3xl font-serif text-gold tracking-wide">AURUM</h3>
+            <h3 className="text-3xl font-serif text-gold tracking-wide">MOFFEE</h3>
             <p className="mt-4 text-primary-foreground/60 max-w-md leading-relaxed">
               Crafting exceptional beverages since 1892. Every bottle tells a 
               story of passion, quality, and the pursuit of perfection.
@@ -65,15 +65,15 @@ const Footer = () => {
             <address className="not-italic text-primary-foreground/60 space-y-3">
               <p>123 Heritage Lane</p>
               <p>London, W1K 1AA</p>
-              <p className="pt-2">hello@aurum.com</p>
-              <p>+44 20 7123 4567</p>
+              <p className="pt-2">hello@moffee.com</p>
+              <p>+91 9650590176</p>
             </address>
           </div>
         </motion.div>
 
         <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-primary-foreground/40">
-            © 2025 Aurum Beverages. All rights reserved.
+            © 2025 MoFFee. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-primary-foreground/40">
             <a href="#" className="hover:text-gold transition-colors">

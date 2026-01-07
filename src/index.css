@@ -122,3 +122,29 @@
     );
   }
 }
+
+/* Smooth scroll behavior for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Canvas rendering optimization */
+canvas {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Scroll sequence section styles */
+.scroll-sequence-section {
+  position: relative;
+  background: #0a0a0a;
+}
+
+/* Ensure smooth animations across browsers */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
