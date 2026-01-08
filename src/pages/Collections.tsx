@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import heroVideo from "@/assets/pt2.mp4";
 
 const products = [
@@ -49,6 +49,7 @@ const products = [
 
 const Collections = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isScrolledPast, setIsScrolledPast] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -56,22 +57,45 @@ const Collections = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolledPast(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolledPast 
+            ? 'bg-background/90 backdrop-blur-md border-b border-border' 
+            : 'bg-transparent border-b border-transparent'
+        }`}
+      >
         <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
           <div className="flex items-center justify-between">
             <Link
               to="/"
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              className={`flex items-center gap-2 transition-colors ${
+                isScrolledPast 
+                  ? 'text-muted-foreground hover:text-foreground' 
+                  : 'text-white/80 hover:text-white'
+              }`}
             >
               <ArrowLeft size={20} />
               <span className="text-sm tracking-widest uppercase hidden sm:inline">Back</span>
             </Link>
             <Link
               to="/"
-              className="text-xl sm:text-2xl font-serif font-semibold tracking-wide text-foreground"
+              className={`text-xl sm:text-2xl font-serif font-semibold tracking-wide transition-colors ${
+                isScrolledPast ? 'text-foreground' : 'text-white'
+              }`}
             >
               MOFFEE
             </Link>
@@ -84,8 +108,11 @@ const Collections = () => {
       <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-16 mb-16 sm:mb-24 text-primary-foreground overflow-hidden">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url(/stitch.jpg)' }}
+          className="absolute inset-0 bg-cover bg-no-repeat"
+          style={{ 
+            backgroundImage: 'url(/stitch.jpg)',
+            backgroundPosition: 'center top'
+          }}
         />
         {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-charcoal/70" />
