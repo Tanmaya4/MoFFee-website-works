@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { useRef, useEffect } from "react";
+import heroVideo from "@/assets/pt2.mp4";
 
 const products = [
   {
@@ -46,6 +48,14 @@ const products = [
 ];
 
 const Collections = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.75;
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -71,7 +81,7 @@ const Collections = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 bg-charcoal text-primary-foreground">
+      <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 mb-16 sm:mb-24 bg-charcoal text-primary-foreground">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -89,6 +99,47 @@ const Collections = () => {
             <p className="mt-4 sm:mt-6 text-base sm:text-lg text-primary-foreground/70 max-w-2xl mx-auto px-4">
               Each beverage in our collection represents the pinnacle of craft and tradition,
               meticulously developed over years of refinement.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Introduction MoFFee Full-Width Video Section */}
+      <section className="relative w-full h-screen overflow-hidden">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl space-y-4 sm:space-y-6"
+          >
+            <span className="text-white text-xs sm:text-sm tracking-[0.3em] uppercase font-sans">
+              INTRODUCING
+            </span>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-gold">
+              Mo<span className="italic">FF</span>ee
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-sans">
+              Energy for the Grind
+            </p>
+            <p className="mt-8 sm:mt-12 text-sm sm:text-base md:text-lg text-white/70 font-sans max-w-2xl mx-auto">
+              Premium cold brew coffee, crafted for those who demand excellence in every sip.
             </p>
           </motion.div>
         </div>

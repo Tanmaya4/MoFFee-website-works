@@ -24,7 +24,7 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: "Explore Collection", href: "/collections", isRoute: true },
+    { name: "Collections", href: "/collections", isRoute: true },
     { name: "Our Story", href: "#story", isRoute: false },
     { name: "Experience", href: "#experience", isRoute: false },
     { name: "Contact", href: "#contact", isRoute: false },

@@ -69,7 +69,7 @@ const HeroSection = () => {
           className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0"
         >
           <Button variant="hero" size="lg" asChild className="w-full sm:w-auto">
-            <Link to="/collections">Explore Collection</Link>
+            <Link to="/collections">Explore Collections</Link>
           </Button>
           <Button variant="heroOutline" size="lg" className="w-full sm:w-auto">
             Our Story
