@@ -81,8 +81,16 @@ const Collections = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 mb-16 sm:mb-24 bg-charcoal text-primary-foreground">
-        <div className="container mx-auto px-4 sm:px-6">
+      <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-16 mb-16 sm:mb-24 text-primary-foreground overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/stitch.jpg)' }}
+        />
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-charcoal/70" />
+        
+        <div className="relative z-10 container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
