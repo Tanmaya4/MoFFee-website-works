@@ -41,6 +41,9 @@ const ScrollSequence = () => {
 
   // Fade out content at the end
   const contentOpacity = useTransform(smoothProgress, [0.7, 0.9], [1, 0]);
+  
+  // Progress bar height
+  const progressHeight = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
 
   // Preload all images
   useEffect(() => {
@@ -256,7 +259,7 @@ const ScrollSequence = () => {
           <div className="w-px h-32 bg-white/10 relative overflow-hidden rounded-full">
             <motion.div
               className="absolute top-0 left-0 w-full bg-gradient-to-b from-amber-400 to-amber-600 rounded-full"
-              style={{ height: useTransform(smoothProgress, [0, 1], ["0%", "100%"]) }}
+              style={{ height: progressHeight }}
             />
           </div>
         </div>
