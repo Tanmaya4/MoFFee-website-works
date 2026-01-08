@@ -4,20 +4,21 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <section className="relative h-screen w-full">
+    <section className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
       <video
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src={heroVideo} type="video/mp4" />
       </video>
 
       {/* Overlay */}
-      <div className="absolute inset-0 hero-overlay" />
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
@@ -34,7 +35,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-serif text-primary-foreground font-medium leading-tight max-w-4xl"
+          className="text-5xl md:text-7xl lg:text-8xl font-serif text-white font-medium leading-tight max-w-4xl"
         >
           Elevate Every
           <span className="block italic text-gold">Moment</span>
@@ -44,7 +45,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-8 text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed"
+          className="mt-8 text-lg md:text-xl text-white/70 max-w-xl leading-relaxed"
         >
           Discover our exquisite collection of handcrafted beverages,
           made with the finest ingredients from around the world.
@@ -64,7 +65,6 @@ const HeroSection = () => {
           </Button>
         </motion.div>
       </div>
-
     </section>
   );
 };
