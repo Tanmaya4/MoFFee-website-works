@@ -75,9 +75,8 @@ const Footer = () => {
               Contact
             </h4>
             <address className="not-italic text-primary-foreground/60 space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <p>123 Heritage Lane</p>
-              <p>London, W1K 1AA</p>
-              <p className="pt-2">hello@moffee.com</p>
+              <p>India</p>
+              <p className="pt-2">dhtanmaya@gmail.com</p>
               <p>+91 9650590176</p>
             </address>
           </div>
