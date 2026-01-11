@@ -6,15 +6,6 @@ import heroVideo from "@/assets/pt2.mp4";
 
 const products = [
   {
-    id: "moffee",
-    name: "Moffee",
-    category: "Premium Cold Brew",
-    description: "Premium cold brew coffee, crafted for those who demand excellence in every sip. Energy for the grind, smoothness for the soul.",
-    image: "/stitch.jpg",
-    details: "355ml • Signature",
-    hasDetailPage: true,
-  },
-  {
     id: 2,
     name: "Golden Elixir",
     category: "Sparkling",
@@ -190,6 +181,32 @@ const Collections = () => {
             <p className="mt-8 sm:mt-12 text-sm sm:text-base md:text-lg text-white/70 font-sans max-w-2xl mx-auto">
               Premium cold brew coffee, crafted for those who demand excellence in every sip.
             </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="pt-6 sm:pt-8"
+            >
+              <Link
+                to="/product/moffee"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-hero-button text-white text-sm font-medium tracking-widest uppercase rounded-full hover:opacity-90 transition-all shadow-lg group"
+              >
+                View More
+                <svg
+                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
