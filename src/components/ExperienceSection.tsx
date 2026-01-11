@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Leaf, Award, Globe } from "lucide-react";
+import { Leaf, Flame, Heart, CalendarCheck } from "lucide-react";
 
 const features = [
   {
@@ -9,16 +9,22 @@ const features = [
       "Every ingredient is carefully selected from sustainable farms committed to environmental stewardship.",
   },
   {
-    icon: Award,
-    title: "Award Winning",
+    icon: Flame,
+    title: "Fire. Water. Time",
     description:
-      "Recognized globally with over 50 international awards for taste, quality, and innovation.",
+      "Three elemental forces unite in perfect harmony, slow-brewed to unlock deep, bold flavors.",
   },
   {
-    icon: Globe,
-    title: "Global Reach",
+    icon: Heart,
+    title: "Gentle on Body",
     description:
-      "From London to Tokyo, our beverages grace the finest establishments worldwide.",
+      "Crafted with low acidity and natural ingredients, designed to nourish without discomfort.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Made for Routines",
+    description:
+      "Seamlessly fits into your daily rituals, bringing calm energy to every morning and moment.",
   },
 ];
 
@@ -41,7 +47,7 @@ const ExperienceSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
