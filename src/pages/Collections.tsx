@@ -6,44 +6,58 @@ import heroVideo from "@/assets/pt2.mp4";
 
 const products = [
   {
-    id: 1,
+    id: "moffee",
+    name: "Moffee",
+    category: "Premium Cold Brew",
+    description: "Premium cold brew coffee, crafted for those who demand excellence in every sip. Energy for the grind, smoothness for the soul.",
+    image: "/stitch.jpg",
+    details: "355ml • Signature",
+    hasDetailPage: true,
+  },
+  {
+    id: 2,
     name: "Golden Elixir",
     category: "Sparkling",
     description: "A refined sparkling beverage with hints of citrus and honey, crafted from sun-ripened fruits and artisanal honey collected from heritage apiaries.",
     image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=1200&h=600&fit=crop",
     details: "750ml • Limited Edition",
+    hasDetailPage: false,
   },
   {
-    id: 2,
+    id: 3,
     name: "Velvet Rose",
     category: "Botanical",
     description: "Delicate rose petals infused with elderflower essence, creating a symphony of floral notes that dance gracefully on your palate.",
     image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=1200&h=600&fit=crop",
     details: "500ml • Seasonal",
+    hasDetailPage: false,
   },
   {
-    id: 3,
+    id: 4,
     name: "Midnight Noir",
     category: "Premium",
     description: "Dark berry blend with a mysterious, complex finish. Notes of blackcurrant, wild blueberry, and a whisper of aged vanilla.",
     image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=1200&h=600&fit=crop",
     details: "750ml • Reserve Collection",
+    hasDetailPage: false,
   },
   {
-    id: 4,
+    id: 5,
     name: "Alpine Frost",
     category: "Refreshment",
     description: "Crisp mountain spring water infused with wild mint and cucumber, evoking the pure essence of alpine meadows at dawn.",
     image: "https://images.unsplash.com/photo-1497534446932-c925b458314e?w=1200&h=600&fit=crop",
     details: "500ml • Year-Round",
+    hasDetailPage: false,
   },
   {
-    id: 5,
+    id: 6,
     name: "Amber Sunrise",
     category: "Artisan",
     description: "A warm blend of tropical mango, passion fruit, and ginger root, capturing the golden warmth of a perfect morning.",
     image: "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=1200&h=600&fit=crop",
     details: "750ml • Signature",
+    hasDetailPage: false,
   },
 ];
 
@@ -233,22 +247,44 @@ const Collections = () => {
                   <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                     {product.description}
                   </p>
-                  <button className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors tracking-widest uppercase">
-                    Learn More
-                    <svg
-                      className={`w-4 h-4 ${index % 2 === 1 ? "lg:rotate-180" : ""}`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                  {product.hasDetailPage ? (
+                    <Link
+                      to={`/product/${product.id}`}
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-primary text-primary-foreground text-sm font-medium tracking-widest uppercase rounded-full hover:bg-primary/90 transition-all shadow-md hover:shadow-lg group"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </button>
+                      View More
+                      <svg
+                        className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${index % 2 === 1 ? "lg:rotate-180 lg:group-hover:-translate-x-1" : ""}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </Link>
+                  ) : (
+                    <button className="inline-flex items-center gap-3 px-6 py-3 border-2 border-primary text-primary text-sm font-medium tracking-widest uppercase rounded-full hover:bg-primary hover:text-primary-foreground transition-all group">
+                      View More
+                      <svg
+                        className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${index % 2 === 1 ? "lg:rotate-180 lg:group-hover:-translate-x-1" : ""}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </button>
+                  )}
                 </div>
               </motion.article>
             ))}
