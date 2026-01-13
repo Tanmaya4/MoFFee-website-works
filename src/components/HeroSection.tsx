@@ -1,38 +1,46 @@
 import { motion } from "framer-motion";
-import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import heroVideo from "@/assets/pt2.mp4";
 import { Button } from "@/components/ui/button";
+import { useVideoPreload } from "@/hooks/useVideoPreload";
 
 const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 1.75;
-    }
-  }, []);
+  const { videoRef, isReady } = useVideoPreload(heroVideo, 1.75);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
+      <div
+        className={`absolute inset-0 transition-opacity duration-500 ${
+          isReady ? "opacity-100" : "opacity-0"
+        }`}
       >
-        <source src={heroVideo} type="video/mp4" />
-      </video>
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+      </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div
+        className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
+          isReady ? "opacity-100" : "opacity-0"
+        }`}
+      />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6">
+      <div
+        className={`relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 transition-opacity duration-500 ${
+          isReady ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,6 +84,15 @@ const HeroSection = () => {
           </Button>
         </motion.div>
       </div>
+
+      {/* Lightweight loader while the video buffers to avoid visible lag */}
+      {!isReady && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black">
+          <span className="text-white/70 text-xs sm:text-sm tracking-[0.3em] uppercase">
+            Loading experience...
+          </span>
+        </div>
+      )}
     </section>
   );
 };

@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import heroVideo from "@/assets/pt2.mp4";
+import { useVideoPreload } from "@/hooks/useVideoPreload";
 
 const products = [
   {
@@ -53,14 +54,8 @@ const products = [
 ];
 
 const Collections = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const { videoRef, isReady: isVideoReady } = useVideoPreload(heroVideo, 1.75);
   const [isScrolledPast, setIsScrolledPast] = useState(false);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 1.75;
-    }
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -146,23 +141,37 @@ const Collections = () => {
 
       {/* Introduction MoFFee Full-Width Video Section */}
       <section className="relative w-full h-screen overflow-hidden">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
+        <div
+          className={`absolute inset-0 transition-opacity duration-500 ${
+            isVideoReady ? "opacity-100" : "opacity-0"
+          }`}
         >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={heroVideo} type="video/mp4" />
+          </video>
+        </div>
         
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div
+          className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
+            isVideoReady ? "opacity-100" : "opacity-0"
+          }`}
+        />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6">
+        <div
+          className={`relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 transition-opacity duration-500 ${
+            isVideoReady ? "opacity-100" : "opacity-0"
+          }`}
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -209,6 +218,15 @@ const Collections = () => {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Lightweight loader while the video buffers to avoid visible lag */}
+        {!isVideoReady && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black">
+            <span className="text-white/70 text-xs sm:text-sm tracking-[0.3em] uppercase">
+              Preparing video...
+            </span>
+          </div>
+        )}
       </section>
 
       {/* Products Section - Landscape Layout */}

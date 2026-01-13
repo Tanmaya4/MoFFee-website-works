@@ -20,30 +20,11 @@ const StorySection = () => {
               <span className="block italic text-gold-light">Excellence</span>
             </h2>
             <p className="mt-6 sm:mt-8 text-primary-foreground/70 text-base sm:text-lg leading-relaxed">
-              Since 1892, we have been dedicated to the art of crafting exceptional 
-              beverages. Our founders believed that every sip should tell a story—a 
-              narrative of quality, tradition, and innovation.
+              Moffee is rooted in the South Indian tradition of kashayam — a method where ingredients are gently boiled in water to draw out their true essence. It's a slow, patient process that values extraction over speed, allowing the ingredients to give what they naturally can.
             </p>
             <p className="mt-4 sm:mt-6 text-primary-foreground/70 text-base sm:text-lg leading-relaxed">
-              Today, we continue this legacy with the same passion, sourcing the 
-              finest ingredients from sustainable farms and pristine natural springs 
-              across the globe.
+              This way of making has been practiced in Indian homes for generations. Moffee carries that familiarity forward, shaped for today — warm, balanced, and meant to be part of everyday routines.
             </p>
-
-            <div className="mt-8 sm:mt-12 flex gap-8 sm:gap-12">
-              <div>
-                <span className="text-3xl sm:text-4xl md:text-5xl font-serif text-gold">130+</span>
-                <p className="mt-2 text-xs sm:text-sm text-primary-foreground/60 tracking-wide uppercase">
-                  Years of Heritage
-                </p>
-              </div>
-              <div>
-                <span className="text-3xl sm:text-4xl md:text-5xl font-serif text-gold">47</span>
-                <p className="mt-2 text-xs sm:text-sm text-primary-foreground/60 tracking-wide uppercase">
-                  Countries Served
-                </p>
-              </div>
-            </div>
           </motion.div>
 
           <motion.div
