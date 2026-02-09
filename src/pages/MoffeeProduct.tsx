@@ -91,7 +91,7 @@ const MoffeeProduct = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background" style={{ backgroundImage: 'url(/images/dark-marble-bg.png)', backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
+    <div className="min-h-screen bg-background">
       {/* Header */}
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -173,7 +173,7 @@ const MoffeeProduct = () => {
       </section>
 
       {/* Product Description Section */}
-      <section className="py-20 sm:py-28 bg-cream/90 backdrop-blur-sm">
+      <section className="py-20 sm:py-28 bg-cream">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -211,7 +211,7 @@ const MoffeeProduct = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 sm:py-28 bg-background/90 backdrop-blur-sm">
+      <section className="py-20 sm:py-28 bg-background">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -323,7 +323,7 @@ const MoffeeProduct = () => {
       </section>
 
       {/* Ingredients Section */}
-      <section className="py-20 sm:py-28 bg-cream/90 backdrop-blur-sm">
+      <section className="py-20 sm:py-28 bg-cream">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -370,7 +370,7 @@ const MoffeeProduct = () => {
       </section>
 
       {/* Best Moments Section */}
-      <section className="py-20 sm:py-28 bg-background/90 backdrop-blur-sm">
+      <section className="py-20 sm:py-28 bg-background">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -458,7 +458,7 @@ const MoffeeProduct = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 sm:py-32 bg-gradient-to-br from-primary/10 via-background/90 to-gold/10 backdrop-blur-sm">
+      <section className="py-24 sm:py-32 bg-gradient-to-br from-primary/10 via-background to-gold/10">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
