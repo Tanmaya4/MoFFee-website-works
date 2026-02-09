@@ -47,6 +47,7 @@ const flavorNotes = [
 
 const nutritionFacts = [
   { label: "Calories", value: "88", unit: "" },
+  { label: "Caffeine", value: "120", unit: "mg" },
   { label: "Added Sugar", value: "0", unit: "" },
   { label: "Protein", value: "6", unit: "g" },
   { label: "Carbohydrates", value: "14", unit: "g" }
@@ -90,7 +91,7 @@ const MoffeeProduct = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" style={{ backgroundImage: 'url(/images/dark-marble-bg.png)', backgroundSize: 'cover', backgroundAttachment: 'fixed', backgroundPosition: 'center' }}>
       {/* Header */}
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -131,7 +132,7 @@ const MoffeeProduct = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ 
-            backgroundImage: 'url(/images/dark-marble-bg.png)',
+            backgroundImage: 'url(/stitch.jpg)',
           }}
         />
         {/* Warm Overlay */}
@@ -172,7 +173,7 @@ const MoffeeProduct = () => {
       </section>
 
       {/* Product Description Section */}
-      <section className="py-20 sm:py-28 bg-cream">
+      <section className="py-20 sm:py-28 bg-cream/90 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -210,7 +211,7 @@ const MoffeeProduct = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 sm:py-28 bg-background">
+      <section className="py-20 sm:py-28 bg-background/90 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -322,7 +323,7 @@ const MoffeeProduct = () => {
       </section>
 
       {/* Ingredients Section */}
-      <section className="py-20 sm:py-28 bg-cream">
+      <section className="py-20 sm:py-28 bg-cream/90 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -369,7 +370,7 @@ const MoffeeProduct = () => {
       </section>
 
       {/* Best Moments Section */}
-      <section className="py-20 sm:py-28 bg-background">
+      <section className="py-20 sm:py-28 bg-background/90 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -432,7 +433,7 @@ const MoffeeProduct = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6"
             >
               {nutritionFacts.map((fact, index) => (
                 <motion.div
@@ -457,7 +458,7 @@ const MoffeeProduct = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 sm:py-32 bg-gradient-to-br from-primary/10 via-background to-gold/10">
+      <section className="py-24 sm:py-32 bg-gradient-to-br from-primary/10 via-background/90 to-gold/10 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
