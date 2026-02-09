@@ -132,7 +132,7 @@ const MoffeeProduct = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ 
-            backgroundImage: 'url(/stitch.jpg)',
+            backgroundImage: 'url(/images/moffee-hero-bg.png)',
           }}
         />
         {/* Warm Overlay */}
