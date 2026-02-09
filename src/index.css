@@ -8,6 +8,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -15,35 +17,35 @@
 
 @layer base {
   :root {
-    --background: 240 4% 95%;
-    --foreground: 240 5% 10%;
+    --background: 30 25% 97%;
+    --foreground: 20 15% 15%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 240 5% 10%;
+    --card: 30 30% 95%;
+    --card-foreground: 20 15% 15%;
 
-    --popover: 240 5% 90%;
-    --popover-foreground: 240 5% 10%;
+    --popover: 30 25% 97%;
+    --popover-foreground: 20 15% 15%;
 
-    --primary: 333 71% 50%;
-    --primary-foreground: 327 73% 97%;
+    --primary: 32 80% 45%;
+    --primary-foreground: 30 25% 97%;
 
-    --secondary: 240 5% 33%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 345 50% 35%;
+    --secondary-foreground: 30 25% 97%;
 
-    --muted: 240 4% 83%;
-    --muted-foreground: 240 5% 10%;
+    --muted: 30 20% 90%;
+    --muted-foreground: 20 10% 45%;
 
-    --accent: 355 100% 97%;
-    --accent-foreground: 349 89% 60%;
+    --accent: 32 60% 55%;
+    --accent-foreground: 20 15% 15%;
 
-    --destructive: 0 72% 50%;
-    --destructive-foreground: 0 85% 97%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 30 25% 97%;
 
-    --border: 240 4% 83%;
-    --input: 240 4% 83%;
-    --ring: 333 71% 50%;
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 32 80% 45%;
 
-    --radius: 1.5rem;
+    --radius: 0.5rem;
 
     /* Custom brand colors */
     --gold: 40 85% 50%;
@@ -90,33 +92,33 @@
   }
 
   .dark {
-    --background: 240 5% 10%;
-    --foreground: 0 0% 98%;
+    --background: 20 15% 8%;
+    --foreground: 30 25% 95%;
 
-    --card: 240 3% 15%;
-    --card-foreground: 0 0% 98%;
+    --card: 20 15% 12%;
+    --card-foreground: 30 25% 95%;
 
-    --popover: 240 5% 26%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 20 15% 12%;
+    --popover-foreground: 30 25% 95%;
 
-    --primary: 328 85% 70%;
-    --primary-foreground: 336 83% 17%;
+    --primary: 40 85% 50%;
+    --primary-foreground: 20 15% 8%;
 
-    --secondary: 240 3% 46%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 345 50% 40%;
+    --secondary-foreground: 30 25% 95%;
 
-    --muted: 240 3% 46%;
-    --muted-foreground: 0 0% 98%;
+    --muted: 20 15% 18%;
+    --muted-foreground: 30 15% 65%;
 
-    --accent: 343 87% 15%;
-    --accent-foreground: 351 94% 71%;
+    --accent: 40 80% 55%;
+    --accent-foreground: 20 15% 8%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 85% 97%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 30 25% 95%;
 
-    --border: 240 5% 33%;
-    --input: 240 5% 33%;
-    --ring: 328 85% 70%;
+    --border: 20 15% 20%;
+    --input: 20 15% 20%;
+    --ring: 40 85% 50%;
     --chart-1: 327 87% 81%;
     --chart-2: 352 95% 81%;
     --chart-3: 328 85% 70%;
