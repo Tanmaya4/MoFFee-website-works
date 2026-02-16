@@ -241,7 +241,7 @@ const MoffeeProduct = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-card p-6 sm:p-8 rounded-2xl text-center group hover:shadow-xl transition-shadow duration-300"
+                className="bg-card p-6 sm:p-8 rounded-2xl text-center group hover:shadow-xl transition-shadow duration-300 border-2 border-gold/40"
               >
                 <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <benefit.icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
@@ -365,7 +365,7 @@ const MoffeeProduct = () => {
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm"
                 >
-                  <div className="w-3 h-3 rounded-full bg-primary" />
+                  <div className="w-3 h-3 rounded-full bg-gold" />
                   <span className="text-charcoal font-medium text-sm sm:text-base">{ingredient}</span>
                 </motion.div>
               ))}
@@ -402,7 +402,7 @@ const MoffeeProduct = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative p-6 sm:p-8 bg-card rounded-2xl border border-border text-center group hover:border-primary/30 transition-colors"
+                className="relative p-6 sm:p-8 bg-card rounded-2xl border-2 border-gold/40 text-center group hover:border-gold/60 transition-colors"
               >
                 <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
                   <moment.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
