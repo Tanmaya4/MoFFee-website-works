@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroVideo from "@/assets/pt2.mp4";
 import { Button } from "@/components/ui/button";
 import { useVideoPreload } from "@/hooks/useVideoPreload";
+import HeroSkeleton from "./HeroSkeleton";
 
 const HeroSection = () => {
   const { videoRef, isReady } = useVideoPreload(heroVideo, 1.75);
@@ -85,14 +86,19 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Lightweight loader while the video buffers to avoid visible lag */}
-      {!isReady && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black">
-          <span className="text-white/70 text-xs sm:text-sm tracking-[0.3em] uppercase">
-            Loading experience...
-          </span>
-        </div>
-      )}
+      {/* Skeleton loader while video buffers */}
+      <AnimatePresence>
+        {!isReady && (
+          <motion.div
+            key="skeleton"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="absolute inset-0 z-30"
+          >
+            <HeroSkeleton />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
