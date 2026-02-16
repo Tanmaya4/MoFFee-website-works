@@ -341,7 +341,7 @@ const MoffeeProduct = () => {
               Pure & Simple
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif text-charcoal">
-              Premium <span className="italic">Ingredients</span>
+              Premium <span className="italic text-gold">Ingredients</span>
             </h2>
             <p className="mt-4 text-charcoal/60 max-w-2xl mx-auto text-base sm:text-lg">
               Every ingredient is carefully selected for quality, taste, and functional benefits.
