@@ -412,8 +412,14 @@ const MoffeeProduct = () => {
       </section>
 
       {/* Nutrition Section */}
-      <section className="py-20 sm:py-28 bg-charcoal text-white">
-        <div className="container mx-auto px-4 sm:px-6">
+      <section className="relative py-20 sm:py-28 text-white overflow-hidden">
+        <img
+          src="/images/nutrition-bg.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-charcoal/80" />
+        <div className="relative z-10 container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
