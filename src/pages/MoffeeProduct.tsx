@@ -25,14 +25,14 @@ const benefits = [
   {
     icon: Coffee,
     title: "Premium Cold Brew",
-    description: "Slow-steeped for 16 hours to extract the smoothest, richest flavor"
+    description: "Slow-steeped to extract the smoothest, richest flavor"
   }
 ];
 
 const ingredients = [
   "Organic Cold Brew Coffee",
   "Filtered Spring Water",
-  "Organic Cane Sugar",
+  "Muleti",
   "Himalayan Pink Salt",
   "Ashwagandha Root Extract",
   "Clove",
@@ -236,20 +236,13 @@ const MoffeeProduct = () => {
             </h2>
             <div className="mt-8 sm:mt-12 space-y-6 text-base sm:text-lg text-charcoal/70 leading-relaxed">
               <p>
-                Moffee was born from a simple belief: your daily coffee should be more than just caffeine. 
-                It should be a moment of pure pleasure, a catalyst for creativity, and a gentle nudge 
-                towards your best self.
+                The idea behind Moffee was born at home. Growing up, my mother would prepare different types of traditional kashayam using fresh leaves, roots, and healing herbs. Because of this daily ritual, I rarely fell sick — no common flu, no frequent viruses, and I can hardly remember the last time I even had a simple nose block. Along with strong immunity, it helped me grow physically healthier and stronger. This lived experience became the foundation of Moffee — a blend of ancient wisdom and everyday wellness.
               </p>
               <p>
-                We source our beans from the misty highlands of Colombia and Ethiopia, where altitude and 
-                tradition combine to create exceptional flavor profiles. Our cold brew process, perfected 
-                over years of experimentation, extracts every nuance of chocolate, caramel, and fruit notes 
-                while leaving bitterness behind.
+                Moffee isn't just a simple coffee — it's inspired by the ancient Indian framework of kashayam, a time-honored Ayurvedic herbal decoction that uses the healing power of liquids to support body and mind. In Ayurveda, kashayam refers to medicinal brews made by simmering herbs and spices to extract their therapeutic essence, promoting digestion, immunity, detoxification, and overall well-being. Our Moffee carries forward this holistic legacy, blending traditional wisdom with modern taste to nourish both health and spirit.
               </p>
               <p>
-                But we didn't stop there. We've infused our cold brew with adaptogenic herbs—ashwagandha 
-                for calm focus, lion's mane for cognitive clarity, and L-theanine for smooth, sustained 
-                energy. The result? A beverage that doesn't just wake you up—it elevates you.
+                Guided by our vision and mission, Moffee aims to take this ancient wisdom to the world — sharing the truth that true greatness often comes from the knowledge of earlier generations. Their understanding of natural healing is timeless and unparalleled, and through Moffee, we honor that legacy while making it accessible for modern lives everywhere and everyday life.
               </p>
             </div>
           </motion.div>
