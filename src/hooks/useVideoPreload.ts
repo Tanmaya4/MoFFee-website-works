@@ -1,8 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function useVideoPreload(src: string, playbackRate = 1) {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [videoElement, setVideoElement] = useState<HTMLVideoElement | null>(
+    null
+  );
   const [isReady, setIsReady] = useState(false);
+
+  // Callback ref so we know the moment the <video> element mounts / unmounts.
+  const setVideoRef = useCallback((node: HTMLVideoElement | null) => {
+    videoRef.current = node;
+    setVideoElement(node);
+  }, []);
 
   // Ask the browser to fetch the video early so it is ready when we render.
   useEffect(() => {
@@ -22,7 +31,7 @@ export function useVideoPreload(src: string, playbackRate = 1) {
 
   // Mark the video as ready once it can play, then bump playback speed.
   useEffect(() => {
-    const video = videoRef.current;
+    const video = videoElement;
     if (!video) return;
 
     const handleReady = () => {
@@ -32,6 +41,12 @@ export function useVideoPreload(src: string, playbackRate = 1) {
       void video.play();
     };
 
+    // If the video was already loaded (e.g. from the preload link), fire now.
+    if (video.readyState >= 3) {
+      handleReady();
+      return;
+    }
+
     video.addEventListener("canplaythrough", handleReady);
     video.addEventListener("loadeddata", handleReady);
     video.load();
@@ -40,7 +55,7 @@ export function useVideoPreload(src: string, playbackRate = 1) {
       video.removeEventListener("canplaythrough", handleReady);
       video.removeEventListener("loadeddata", handleReady);
     };
-  }, [playbackRate, src]);
+  }, [videoElement, playbackRate, src]);
 
-  return { videoRef, isReady };
+  return { videoRef: setVideoRef, isReady };
 }

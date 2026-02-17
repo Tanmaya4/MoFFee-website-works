@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import MoffeeProductSkeleton from "@/components/MoffeeProductSkeleton";
 import testReportPage1 from "@/assets/test-report-page1.jpg";
 import testReportPage2 from "@/assets/test-report-page2.jpg";
-import testReportPage3 from "@/assets/test-report-page3.jpg";
 
 const benefits = [
   {
@@ -316,7 +315,7 @@ const MoffeeProduct = () => {
               Taste Profile
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif">
-              The Lifecycle of <span className="italic text-gold-light">Five-Sense</span> Experience
+              The Lifecycle of <span className="italic text-primary">Five-Sense</span> Experience
             </h2>
           </motion.div>
 
@@ -507,8 +506,8 @@ const MoffeeProduct = () => {
             </p>
           </motion.div>
 
-          <div className="max-w-3xl mx-auto space-y-6">
-            {[testReportPage1, testReportPage2, testReportPage3].map((page, index) => (
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[testReportPage1, testReportPage2].map((page, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -547,15 +546,9 @@ const MoffeeProduct = () => {
             </p>
             <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-8 sm:px-12 py-4 sm:py-5 bg-gradient-hero-button text-white text-sm sm:text-base tracking-widest uppercase rounded-full font-medium hover:opacity-90 transition-opacity shadow-lg">
-                Buy Now — $4.99
-              </button>
-              <button className="px-8 sm:px-10 py-4 sm:py-5 bg-transparent border-2 border-foreground text-foreground text-sm sm:text-base tracking-widest uppercase rounded-full font-medium hover:bg-foreground hover:text-background transition-all">
-                Subscribe & Save 20%
+                Buy Now — ₹30
               </button>
             </div>
-            <p className="mt-6 text-sm text-muted-foreground">
-              Free shipping on orders over $35 • 30-day satisfaction guarantee
-            </p>
           </motion.div>
         </div>
       </section>
