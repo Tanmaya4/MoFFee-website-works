@@ -43,19 +43,20 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      <nav
-        className={`container mx-auto px-4 sm:px-6 py-4 sm:py-6 transition-all duration-300 ${
-          isScrolled
-            ? "bg-background/80 backdrop-blur-md shadow-sm"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="flex items-center justify-between">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/80 backdrop-blur-md shadow-sm"
+          : "bg-transparent"
+      }`}
+    >
+      <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 transition-all duration-300">
+        <div className="flex items-center justify-between w-full">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
+            className="flex-shrink-0"
           >
             <Link
               to="/"
@@ -72,7 +73,7 @@ const Header = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden lg:flex items-center gap-6 xl:gap-8"
+            className="hidden lg:flex items-center gap-6 xl:gap-8 flex-shrink-0"
           >
             {navLinks.map((link) => (
               <li key={link.name}>
@@ -106,7 +107,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 transition-colors duration-300 ${
+            className={`lg:hidden p-2 transition-colors duration-300 flex-shrink-0 ${
               isScrolled ? "text-foreground" : "text-primary-foreground"
             }`}
             aria-label="Toggle menu"

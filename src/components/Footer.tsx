@@ -16,8 +16,10 @@ const Footer = () => {
           <div className="sm:col-span-2">
             <h3 className="text-2xl sm:text-3xl font-serif text-gold tracking-wide">MOFFEE</h3>
             <p className="mt-4 text-primary-foreground/60 max-w-md leading-relaxed text-sm sm:text-base">
-              Crafting exceptional beverages since 1892. Every bottle tells a 
-              story of passion, quality, and the pursuit of perfection.
+              Crafting exceptional beverages using the wisdom of ancient{" "}
+              <span className="italic text-primary">BHARAT</span>. Every botle is
+              homemade with passion, love, quality with pursuit of employability
+              for women.
             </p>
             <div className="mt-6 flex gap-4">
               <a
@@ -57,16 +59,14 @@ const Footer = () => {
                   Collection
                 </Link>
               </li>
-              {["Our Story", "Stockists", "Press"].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="text-sm sm:text-base text-primary-foreground/60 hover:text-gold transition-colors"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link
+                  to="/collections"
+                  className="text-sm sm:text-base text-primary-foreground/60 hover:text-gold transition-colors"
+                >
+                  Stockists
+                </Link>
+              </li>
             </ul>
           </div>
 

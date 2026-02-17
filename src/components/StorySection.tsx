@@ -34,12 +34,12 @@ const StorySection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative order-1 lg:order-2"
           >
-            <div className="aspect-[4/5] sm:aspect-[4/5] rounded-lg overflow-hidden">
+            <div className="rounded-lg overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&h=800&fit=crop"
-                alt="Crafting process"
+                src="/images/kashayam.jpeg"
+                alt="Kashayam"
                 loading="lazy"
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-contain max-w-full"
               />
             </div>
             <div className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-8 w-36 h-36 sm:w-48 sm:h-48 bg-gradient-gold rounded-lg hidden md:flex items-center justify-center">

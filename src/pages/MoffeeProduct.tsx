@@ -1,6 +1,20 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Leaf, Zap, Heart, Coffee, Sun, Droplets, Eye, Hand, Wind, Ear, UtensilsCrossed } from "lucide-react";
+import {
+  ArrowLeft,
+  Worm,
+  Zap,
+  Coffee,
+  Sun,
+  Droplets,
+  Eye,
+  Hand,
+  Wind,
+  Ear,
+  UtensilsCrossed,
+  ShieldPlus,
+  Stethoscope,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import MoffeeProductSkeleton from "@/components/MoffeeProductSkeleton";
 import testReportPage1 from "@/assets/test-report-page1.jpg";
@@ -10,32 +24,36 @@ const benefits = [
   {
     icon: Zap,
     title: "Natural Energy Boost",
-    description: "Sustained energy without the crash, powered by natural caffeine and adaptogens"
+    description:
+      "Sustained energy without the crash, powered by natural caffeine and adaptogens. Solves tiredness, brain fog, work fatigue.",
+    bgImage: "/images/face.png"
   },
   {
-    icon: Leaf,
-    title: "100% Natural Ingredients",
-    description: "No artificial preservatives, flavors, or sweeteners—just pure goodness"
+    icon: Worm,
+    title: "Gut Parasite Killer",
+    description: "Eliminates harmful intestinal worms and supports a healthier digestive system.",
+    bgImage: "/images/worm.png"
   },
   {
-    icon: Heart,
-    title: "Mood Enhancer",
-    description: "Elevates your mood and focus with carefully selected botanical extracts"
+    icon: ShieldPlus,
+    title: "Strengthens immunity",
+    description:
+      "Fights everyday infections. Solves frequent colds, weak immunity, pollution impact.",
+    bgImage: "/images/viruses.png"
   },
   {
-    icon: Coffee,
-    title: "Premium Cold Brew",
-    description: "Slow-steeped to extract the smoothest, richest flavor"
+    icon: Stethoscope,
+    title: "Aids in digestion",
+    description: "Fixes digestion, acidity & bloating naturally, gas, heartburn, heavy stomach after meals",
+    bgImage: "/images/stomach.png"
   }
 ];
 
 const ingredients = [
   "Organic Cold Brew Coffee",
   "Filtered Spring Water",
-  "Muleti",
-  "Himalayan Pink Salt",
-  "Ashwagandha Root Extract",
-  "Clove",
+  "Earthly Atimadhuram Root",
+  "Aromatic Clove",
 ];
 
 const fiveSenseExperience = [
@@ -212,6 +230,9 @@ const MoffeeProduct = () => {
               <button className="mt-4 sm:mt-8 px-8 sm:px-12 py-4 sm:py-5 bg-gradient-hero-button text-white text-sm sm:text-base tracking-widest uppercase rounded-full font-medium hover:opacity-90 transition-opacity shadow-lg">
                 Buy Now — ₹30
               </button>
+              <p className="mt-6 sm:mt-8 text-sm sm:text-base text-white/70">
+                Moffee is served in 100ml spouch packet with the shelf life of 2 weeks
+              </p>
             </motion.div>
           </motion.div>
         </div>
@@ -277,17 +298,28 @@ const MoffeeProduct = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-card p-6 sm:p-8 rounded-2xl text-center group hover:shadow-xl transition-shadow duration-300 border-2 border-gold/40"
+                className="relative overflow-hidden bg-card p-6 sm:p-8 rounded-2xl text-center group hover:shadow-xl transition-shadow duration-300 border-2 border-gold/40"
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <benefit.icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
+                {benefit.bgImage && (
+                  <img
+                    src={benefit.bgImage}
+                    alt=""
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25"
+                  />
+                )}
+
+                <div className="relative z-10">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <benefit.icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-serif text-foreground mb-2 sm:mb-3">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    {benefit.description}
+                  </p>
                 </div>
-                <h3 className="text-lg sm:text-xl font-serif text-foreground mb-2 sm:mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  {benefit.description}
-                </p>
               </motion.div>
             ))}
           </div>
