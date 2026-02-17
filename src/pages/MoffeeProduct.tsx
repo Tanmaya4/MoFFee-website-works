@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Leaf, Zap, Heart, Coffee, Sun, Droplets } from "lucide-react";
 import { useState, useEffect } from "react";
+import MoffeeProductSkeleton from "@/components/MoffeeProductSkeleton";
 
 const benefits = [
   {
@@ -30,11 +31,9 @@ const ingredients = [
   "Organic Cold Brew Coffee",
   "Filtered Spring Water",
   "Organic Cane Sugar",
-  "Natural Vanilla Extract",
   "Himalayan Pink Salt",
   "Ashwagandha Root Extract",
-  "Lion's Mane Mushroom",
-  "L-Theanine (from Green Tea)"
+  "Clove",
 ];
 
 const flavorNotes = [
@@ -78,6 +77,7 @@ const bestMoments = [
 
 const MoffeeProduct = () => {
   const [isScrolledPast, setIsScrolledPast] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,7 +90,28 @@ const MoffeeProduct = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
+    <AnimatePresence mode="wait">
+      {isLoading ? (
+        <motion.div
+          key="skeleton"
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+        >
+          <MoffeeProductSkeleton />
+        </motion.div>
+      ) : (
+        <motion.div
+          key="content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+        >
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header 
@@ -514,6 +535,9 @@ const MoffeeProduct = () => {
         </div>
       </footer>
     </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
