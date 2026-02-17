@@ -1,8 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Leaf, Zap, Heart, Coffee, Sun, Droplets } from "lucide-react";
+import { ArrowLeft, Leaf, Zap, Heart, Coffee, Sun, Droplets, Eye, Hand, Wind, Ear, UtensilsCrossed } from "lucide-react";
 import { useState, useEffect } from "react";
 import MoffeeProductSkeleton from "@/components/MoffeeProductSkeleton";
+import testReportPage1 from "@/assets/test-report-page1.jpg";
+import testReportPage2 from "@/assets/test-report-page2.jpg";
+import testReportPage3 from "@/assets/test-report-page3.jpg";
 
 const benefits = [
   {
@@ -36,12 +39,32 @@ const ingredients = [
   "Clove",
 ];
 
-const flavorNotes = [
-  { note: "Dark Chocolate", intensity: 85 },
-  { note: "Caramel", intensity: 70 },
-  { note: "Vanilla Bean", intensity: 60 },
-  { note: "Toasted Hazelnut", intensity: 45 },
-  { note: "Honey", intensity: 35 }
+const fiveSenseExperience = [
+  {
+    icon: Eye,
+    sense: "See",
+    description: "A dark, rich brew that instantly sparks craving."
+  },
+  {
+    icon: Hand,
+    sense: "Touch",
+    description: "Cool and smooth liquid pouch bed in hand, crafted to feel premium from the first hold."
+  },
+  {
+    icon: Wind,
+    sense: "Smell",
+    description: "Warm clove aromatics rise the moment it opens, fresh and inviting."
+  },
+  {
+    icon: Ear,
+    sense: "Hear",
+    description: "The deep, satisfying gulp sounds of bold black coffee as you drinks down."
+  },
+  {
+    icon: UtensilsCrossed,
+    sense: "Taste",
+    description: "Earthy mulethi opens softly, leaving a natural sweetness that lingers long after the sip."
+  }
 ];
 
 const nutritionFacts = [
@@ -279,71 +302,43 @@ const MoffeeProduct = () => {
         </div>
       </section>
 
-      {/* Flavor Profile Section */}
+      {/* Five-Sense Experience Section */}
       <section className="py-20 sm:py-28 bg-charcoal text-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="text-gold text-xs sm:text-sm tracking-[0.3em] uppercase">
-                Taste Profile
-              </span>
-              <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif">
-                Flavor <span className="italic text-gold-light">Notes</span>
-              </h2>
-              <p className="mt-6 text-white/70 leading-relaxed text-base sm:text-lg">
-                A symphony of carefully balanced flavors that dance on your palate. 
-                From the first sip to the lingering finish, every note tells a story.
-              </p>
-              
-              <div className="mt-8 sm:mt-12 space-y-5 sm:space-y-6">
-                {flavorNotes.map((flavor, index) => (
-                  <motion.div
-                    key={flavor.note}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="space-y-2"
-                  >
-                    <div className="flex justify-between text-sm sm:text-base">
-                      <span className="font-medium">{flavor.note}</span>
-                      <span className="text-white/50">{flavor.intensity}%</span>
-                    </div>
-                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${flavor.intensity}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.3 + index * 0.1 }}
-                        className="h-full bg-gradient-to-r from-gold to-gold-light rounded-full"
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 sm:mb-16"
+          >
+            <span className="text-gold text-xs sm:text-sm tracking-[0.3em] uppercase">
+              Taste Profile
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif">
+              The Lifecycle of <span className="italic text-gold-light">Five-Sense</span> Experience
+            </h2>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="aspect-square rounded-3xl overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=800&fit=crop"
-                  alt="Moffee flavor profile"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 sm:w-40 sm:h-40 bg-gold/20 rounded-full blur-3xl" />
-            </motion.div>
+          <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8">
+            {fiveSenseExperience.map((item, index) => (
+              <motion.div
+                key={item.sense}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="flex items-start gap-5 sm:gap-6 p-5 sm:p-6 bg-white/5 rounded-2xl border border-white/10"
+              >
+                <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 bg-gold/10 rounded-full flex items-center justify-center">
+                  <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-gold" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-serif text-gold mb-1">{item.sense}</h3>
+                  <p className="text-sm sm:text-base text-white/70 leading-relaxed">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -487,6 +482,48 @@ const MoffeeProduct = () => {
                 </motion.div>
               ))}
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Test Report Section */}
+      <section className="py-20 sm:py-28 bg-cream">
+        <div className="container mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 sm:mb-16"
+          >
+            <span className="text-primary text-xs sm:text-sm tracking-[0.3em] uppercase">
+              Lab Certified
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif text-charcoal">
+              Test <span className="italic text-gold">Report</span>
+            </h2>
+            <p className="mt-4 text-charcoal/60 max-w-2xl mx-auto text-base sm:text-lg">
+              Government approved and NABL accredited lab certified results.
+            </p>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            {[testReportPage1, testReportPage2, testReportPage3].map((page, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="rounded-2xl overflow-hidden shadow-lg border border-gold/20"
+              >
+                <img
+                  src={page}
+                  alt={`Test Report Page ${index + 1}`}
+                  className="w-full h-auto"
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
