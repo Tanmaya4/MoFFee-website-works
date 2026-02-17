@@ -1,9 +1,10 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import heroVideo from "@/assets/pt2.mp4";
 import { useVideoPreload } from "@/hooks/useVideoPreload";
+import CollectionsSkeleton from "@/components/CollectionsSkeleton";
 
 const products = [
   {
@@ -56,6 +57,7 @@ const products = [
 const Collections = () => {
   const { videoRef, isReady: isVideoReady } = useVideoPreload(heroVideo, 1.75);
   const [isScrolledPast, setIsScrolledPast] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,304 +65,320 @@ const Collections = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial state
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolledPast 
-            ? 'bg-background/90 backdrop-blur-md border-b border-border' 
-            : 'bg-transparent border-b border-transparent'
-        }`}
-      >
-        <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
-          <div className="flex items-center justify-between">
-            <Link
-              to="/"
-              className={`flex items-center gap-2 transition-colors ${
-                isScrolledPast 
-                  ? 'text-muted-foreground hover:text-foreground' 
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              <ArrowLeft size={20} />
-              <span className="text-sm tracking-widest uppercase hidden sm:inline">Back</span>
-            </Link>
-            <Link
-              to="/"
-              className={`text-xl sm:text-2xl font-serif font-semibold tracking-wide transition-colors ${
-                isScrolledPast ? 'text-foreground' : 'text-white'
-              }`}
-            >
-              MOFFEE
-            </Link>
-            <div className="w-16 sm:w-20" /> {/* Spacer for centering */}
-          </div>
-        </nav>
-      </header>
-
-      {/* Hero Section */}
-      <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-16 mb-16 sm:mb-24 text-primary-foreground overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-no-repeat"
-          style={{ 
-            backgroundImage: 'url(/stitch.jpg)',
-            backgroundPosition: 'center top'
-          }}
-        />
-        {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-charcoal/70" />
-        
-        <div className="relative z-10 container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <span className="text-gold text-xs sm:text-sm tracking-[0.3em] uppercase">
-              The Collection
-            </span>
-            <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif">
-              Crafted to
-              <span className="italic text-gold-light"> Perfection</span>
-            </h1>
-            <p className="mt-4 sm:mt-6 text-base sm:text-lg text-primary-foreground/70 max-w-2xl mx-auto px-4">
-              Each beverage in our collection represents the pinnacle of craft and tradition,
-              meticulously developed over years of refinement.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Introduction MoFFee Full-Width Video Section */}
-      <section className="relative w-full h-screen overflow-hidden">
-        <div
-          className={`absolute inset-0 transition-opacity duration-500 ${
-            isVideoReady ? "opacity-100" : "opacity-0"
-          }`}
+    <AnimatePresence mode="wait">
+      {isLoading ? (
+        <motion.div
+          key="skeleton"
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
         >
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src={heroVideo} type="video/mp4" />
-          </video>
-        </div>
-        
-        {/* Overlay */}
-        <div
-          className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
-            isVideoReady ? "opacity-100" : "opacity-0"
-          }`}
-        />
-
-        {/* Content */}
-        <div
-          className={`relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 transition-opacity duration-500 ${
-            isVideoReady ? "opacity-100" : "opacity-0"
-          }`}
+          <CollectionsSkeleton />
+        </motion.div>
+      ) : (
+        <motion.div
+          key="content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="min-h-screen bg-background"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl space-y-4 sm:space-y-6"
+          {/* Header */}
+          <header 
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+              isScrolledPast 
+                ? 'bg-background/90 backdrop-blur-md border-b border-border' 
+                : 'bg-transparent border-b border-transparent'
+            }`}
           >
-            <span className="text-white text-xs sm:text-sm tracking-[0.3em] uppercase font-sans">
-              INTRODUCING
-            </span>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-gold">
-              Mo<span className="italic">FF</span>ee
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-sans">
-              Energy for the Grind
-            </p>
-            <p className="mt-8 sm:mt-12 text-sm sm:text-base md:text-lg text-white/70 font-sans max-w-2xl mx-auto">
-              Premium cold brew coffee, crafted for those who demand excellence in every sip.
-            </p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="pt-6 sm:pt-8"
-            >
-              <Link
-                to="/product/moffee"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-hero-button text-white text-sm font-medium tracking-widest uppercase rounded-full hover:opacity-90 transition-all shadow-lg group"
-              >
-                View More
-                <svg
-                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Lightweight loader while the video buffers to avoid visible lag */}
-        {!isVideoReady && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black">
-            <span className="text-white/70 text-xs sm:text-sm tracking-[0.3em] uppercase">
-              Preparing video...
-            </span>
-          </div>
-        )}
-      </section>
-
-      {/* Products Section - Landscape Layout */}
-      <section className="py-12 sm:py-16 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="space-y-12 sm:space-y-16 md:space-y-24">
-            {products.map((product, index) => (
-              <motion.article
-                key={product.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
-              >
-                {/* Image */}
-                <div
-                  className={`relative overflow-hidden rounded-lg sm:rounded-xl ${
-                    index % 2 === 1 ? "lg:order-2" : ""
+            <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
+              <div className="flex items-center justify-between">
+                <Link
+                  to="/"
+                  className={`flex items-center gap-2 transition-colors ${
+                    isScrolledPast 
+                      ? 'text-muted-foreground hover:text-foreground' 
+                      : 'text-white/80 hover:text-white'
                   }`}
                 >
-                  <div className="aspect-[16/10] sm:aspect-[16/9]">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    />
-                  </div>
-                  <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
-                    <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 bg-gold/90 text-charcoal text-xs tracking-widest uppercase rounded-full font-medium">
-                      {product.category}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div
-                  className={`space-y-4 sm:space-y-6 ${
-                    index % 2 === 1 ? "lg:order-1 lg:text-right" : ""
+                  <ArrowLeft size={20} />
+                  <span className="text-sm tracking-widest uppercase hidden sm:inline">Back</span>
+                </Link>
+                <Link
+                  to="/"
+                  className={`text-xl sm:text-2xl font-serif font-semibold tracking-wide transition-colors ${
+                    isScrolledPast ? 'text-foreground' : 'text-white'
                   }`}
                 >
-                  <div>
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-foreground">
-                      {product.name}
-                    </h2>
-                    <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-muted-foreground tracking-widest uppercase">
-                      {product.details}
-                    </p>
-                  </div>
-                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                    {product.description}
-                  </p>
-                  {product.hasDetailPage ? (
-                    <Link
-                      to={`/product/${product.id}`}
-                      className="inline-flex items-center gap-3 px-6 py-3 bg-primary text-primary-foreground text-sm font-medium tracking-widest uppercase rounded-full hover:bg-primary/90 transition-all shadow-md hover:shadow-lg group"
+                  MOFFEE
+                </Link>
+                <div className="w-16 sm:w-20" />
+              </div>
+            </nav>
+          </header>
+
+          {/* Hero Section */}
+          <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-16 mb-16 sm:mb-24 text-primary-foreground overflow-hidden">
+            <div 
+              className="absolute inset-0 bg-cover bg-no-repeat"
+              style={{ 
+                backgroundImage: 'url(/stitch.jpg)',
+                backgroundPosition: 'center top'
+              }}
+            />
+            <div className="absolute inset-0 bg-charcoal/70" />
+            
+            <div className="relative z-10 container mx-auto px-4 sm:px-6">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-center"
+              >
+                <span className="text-gold text-xs sm:text-sm tracking-[0.3em] uppercase">
+                  The Collection
+                </span>
+                <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif">
+                  Crafted to
+                  <span className="italic text-gold-light"> Perfection</span>
+                </h1>
+                <p className="mt-4 sm:mt-6 text-base sm:text-lg text-primary-foreground/70 max-w-2xl mx-auto px-4">
+                  Each beverage in our collection represents the pinnacle of craft and tradition,
+                  meticulously developed over years of refinement.
+                </p>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Introduction MoFFee Full-Width Video Section */}
+          <section className="relative w-full h-screen overflow-hidden">
+            <div
+              className={`absolute inset-0 transition-opacity duration-500 ${
+                isVideoReady ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <video
+                ref={videoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src={heroVideo} type="video/mp4" />
+              </video>
+            </div>
+            
+            <div
+              className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
+                isVideoReady ? "opacity-100" : "opacity-0"
+              }`}
+            />
+
+            <div
+              className={`relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 transition-opacity duration-500 ${
+                isVideoReady ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="max-w-4xl space-y-4 sm:space-y-6"
+              >
+                <span className="text-white text-xs sm:text-sm tracking-[0.3em] uppercase font-sans">
+                  INTRODUCING
+                </span>
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-gold">
+                  Mo<span className="italic">FF</span>ee
+                </h1>
+                <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-sans">
+                  Energy for the Grind
+                </p>
+                <p className="mt-8 sm:mt-12 text-sm sm:text-base md:text-lg text-white/70 font-sans max-w-2xl mx-auto">
+                  Premium cold brew coffee, crafted for those who demand excellence in every sip.
+                </p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="pt-6 sm:pt-8"
+                >
+                  <Link
+                    to="/product/moffee"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-hero-button text-white text-sm font-medium tracking-widest uppercase rounded-full hover:opacity-90 transition-all shadow-lg group"
+                  >
+                    View More
+                    <svg
+                      className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      View More
-                      <svg
-                        className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${index % 2 === 1 ? "lg:rotate-180 lg:group-hover:-translate-x-1" : ""}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </Link>
-                  ) : (
-                    <button className="inline-flex items-center gap-3 px-6 py-3 border-2 border-primary text-primary text-sm font-medium tracking-widest uppercase rounded-full hover:bg-primary hover:text-primary-foreground transition-all group">
-                      View More
-                      <svg
-                        className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${index % 2 === 1 ? "lg:rotate-180 lg:group-hover:-translate-x-1" : ""}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </button>
-                  )}
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </div>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-cream">
-        <div className="container mx-auto px-4 sm:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-charcoal">
-              Find a Stockist Near You
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-              Our beverages are available at premium retailers and select restaurants worldwide.
-            </p>
-            <Link
-              to="/"
-              className="inline-block mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-charcoal text-primary-foreground text-sm tracking-widest uppercase rounded-full hover:bg-charcoal/90 transition-colors"
-            >
-              Contact Us
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+            {!isVideoReady && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black">
+                <span className="text-white/70 text-xs sm:text-sm tracking-[0.3em] uppercase">
+                  Preparing video...
+                </span>
+              </div>
+            )}
+          </section>
 
-      {/* Footer */}
-      <footer className="py-8 sm:py-12 bg-charcoal text-primary-foreground">
-        <div className="container mx-auto px-4 sm:px-6 text-center">
-          <p className="text-xs sm:text-sm text-primary-foreground/40">
-            © 2025 Moffee. All rights reserved.
-          </p>
-        </div>
-      </footer>
-    </div>
+          {/* Products Section - Landscape Layout */}
+          <section className="py-12 sm:py-16 md:py-24">
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className="space-y-12 sm:space-y-16 md:space-y-24">
+                {products.map((product, index) => (
+                  <motion.article
+                    key={product.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                    className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center ${
+                      index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                    }`}
+                  >
+                    <div
+                      className={`relative overflow-hidden rounded-lg sm:rounded-xl ${
+                        index % 2 === 1 ? "lg:order-2" : ""
+                      }`}
+                    >
+                      <div className="aspect-[16/10] sm:aspect-[16/9]">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        />
+                      </div>
+                      <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
+                        <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 bg-gold/90 text-charcoal text-xs tracking-widest uppercase rounded-full font-medium">
+                          {product.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`space-y-4 sm:space-y-6 ${
+                        index % 2 === 1 ? "lg:order-1 lg:text-right" : ""
+                      }`}
+                    >
+                      <div>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-foreground">
+                          {product.name}
+                        </h2>
+                        <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-muted-foreground tracking-widest uppercase">
+                          {product.details}
+                        </p>
+                      </div>
+                      <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                        {product.description}
+                      </p>
+                      {product.hasDetailPage ? (
+                        <Link
+                          to={`/product/${product.id}`}
+                          className="inline-flex items-center gap-3 px-6 py-3 bg-primary text-primary-foreground text-sm font-medium tracking-widest uppercase rounded-full hover:bg-primary/90 transition-all shadow-md hover:shadow-lg group"
+                        >
+                          View More
+                          <svg
+                            className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${index % 2 === 1 ? "lg:rotate-180 lg:group-hover:-translate-x-1" : ""}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                          </svg>
+                        </Link>
+                      ) : (
+                        <button className="inline-flex items-center gap-3 px-6 py-3 border-2 border-primary text-primary text-sm font-medium tracking-widest uppercase rounded-full hover:bg-primary hover:text-primary-foreground transition-all group">
+                          View More
+                          <svg
+                            className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${index % 2 === 1 ? "lg:rotate-180 lg:group-hover:-translate-x-1" : ""}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="py-16 sm:py-20 md:py-24 bg-cream">
+            <div className="container mx-auto px-4 sm:px-6 text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-charcoal">
+                  Find a Stockist Near You
+                </h2>
+                <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
+                  Our beverages are available at premium retailers and select restaurants worldwide.
+                </p>
+                <Link
+                  to="/"
+                  className="inline-block mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-charcoal text-primary-foreground text-sm tracking-widest uppercase rounded-full hover:bg-charcoal/90 transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="py-8 sm:py-12 bg-charcoal text-primary-foreground">
+            <div className="container mx-auto px-4 sm:px-6 text-center">
+              <p className="text-xs sm:text-sm text-primary-foreground/40">
+                © 2025 Moffee. All rights reserved.
+              </p>
+            </div>
+          </footer>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
