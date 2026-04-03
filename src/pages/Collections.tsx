@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import heroVideo from "@/assets/pt2.mp4";
+import fluidBg from "@/assets/fluid-bg.mp4";
 import { useVideoPreload } from "@/hooks/useVideoPreload";
 import CollectionsSkeleton from "@/components/CollectionsSkeleton";
 
