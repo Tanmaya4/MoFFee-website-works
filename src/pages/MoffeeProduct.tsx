@@ -228,7 +228,7 @@ const MoffeeProduct = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
             >
               <button className="mt-4 sm:mt-8 px-8 sm:px-12 py-4 sm:py-5 bg-gradient-hero-button text-white text-sm sm:text-base tracking-widest uppercase rounded-full font-medium hover:opacity-90 transition-opacity shadow-lg">
-                Buy Now — ₹30
+                Buy Now
               </button>
               <p className="mt-6 sm:mt-8 text-sm sm:text-base text-white/70">
                 Moffee is served in 100ml spouch packet with the shelf life of 2 weeks
