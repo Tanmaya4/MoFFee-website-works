@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import heroVideo from "@/assets/pt2.mp4";
+import fluidBg from "@/assets/fluid-bg.mp4";
 import { useVideoPreload } from "@/hooks/useVideoPreload";
 import CollectionsSkeleton from "@/components/CollectionsSkeleton";
 
@@ -91,8 +92,19 @@ const Collections = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="min-h-screen bg-background"
+          className="min-h-screen bg-background relative"
         >
+          {/* Background video - visible only where bg is white */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="fixed inset-0 w-full h-full object-cover -z-10 opacity-15 pointer-events-none"
+          >
+            <source src={fluidBg} type="video/mp4" />
+          </video>
+
           {/* Header */}
           <header 
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
