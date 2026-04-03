@@ -92,7 +92,7 @@ const Collections = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="min-h-screen bg-background relative"
+          className="min-h-screen relative"
         >
           {/* Background video - visible only where bg is white */}
           <video
