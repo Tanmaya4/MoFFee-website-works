@@ -100,7 +100,7 @@ const Collections = () => {
             muted
             loop
             playsInline
-            className="fixed inset-0 w-full h-full object-cover -z-10 opacity-15 pointer-events-none"
+            className="fixed inset-0 w-full h-full object-cover -z-10 pointer-events-none"
           >
             <source src={fluidBg} type="video/mp4" />
           </video>
