@@ -40,23 +40,21 @@ const Cart = () => {
           transition={{ duration: 0.6 }}
           className="w-full border-b border-white/10"
         >
-          <div className="flex flex-col md:flex-row items-center w-full">
-            {/* Image side */}
-            <div className="w-full md:w-1/2 h-64 sm:h-80 md:h-[420px] overflow-hidden bg-charcoal relative">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-              >
-                <source src={heroVideo} type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-black/30" />
-            </div>
+          <div className="relative w-full h-80 sm:h-96 md:h-[420px] overflow-hidden">
+            {/* Video background covering full div */}
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src={heroVideo} type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-black/50" />
 
-            {/* Details side */}
-            <div className="w-full md:w-1/2 px-8 sm:px-12 lg:px-20 py-10 md:py-0">
+            {/* Text overlay */}
+            <div className="relative z-10 flex flex-col justify-center items-start h-full px-8 sm:px-12 lg:px-20">
               <p className="text-xs tracking-[0.3em] uppercase text-primary/80 mb-2">
                 Premium Coffee
               </p>
@@ -68,7 +66,7 @@ const Cart = () => {
               </p>
 
               {/* Quantity selector */}
-              <div className="flex items-center gap-6 mb-10">
+              <div className="flex items-center gap-6">
                 <span className="text-sm tracking-wider uppercase text-white/50">
                   Quantity
                 </span>
