@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Minus, Plus } from "lucide-react";
 import { useState } from "react";
+import heroVideo from "@/assets/pt2.mp4";
 
 const Cart = () => {
   const [quantity, setQuantity] = useState(1);
@@ -41,12 +42,17 @@ const Cart = () => {
         >
           <div className="flex flex-col md:flex-row items-center w-full">
             {/* Image side */}
-            <div className="w-full md:w-1/2 h-64 sm:h-80 md:h-[420px] overflow-hidden bg-charcoal">
-              <img
-                src="/images/Thumbnail.png"
-                alt="Moffee"
-                className="w-full h-full object-cover opacity-90"
-              />
+            <div className="w-full md:w-1/2 h-64 sm:h-80 md:h-[420px] overflow-hidden bg-charcoal relative">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src={heroVideo} type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-black/30" />
             </div>
 
             {/* Details side */}
