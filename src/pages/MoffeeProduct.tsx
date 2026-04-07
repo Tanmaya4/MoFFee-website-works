@@ -227,9 +227,11 @@ const MoffeeProduct = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <button className="mt-4 sm:mt-8 px-8 sm:px-12 py-4 sm:py-5 bg-gradient-hero-button text-white text-sm sm:text-base tracking-widest uppercase rounded-full font-medium hover:opacity-90 transition-opacity shadow-lg">
-                Buy Now
-              </button>
+              <Link to="/cart">
+                <button className="mt-4 sm:mt-8 px-8 sm:px-12 py-4 sm:py-5 bg-gradient-hero-button text-white text-sm sm:text-base tracking-widest uppercase rounded-full font-medium hover:opacity-90 transition-opacity shadow-lg">
+                  Buy Now
+                </button>
+              </Link>
               <p className="mt-6 sm:mt-8 text-sm sm:text-base text-white/70">
                 Moffee is served in 100ml spouch packet with the shelf life of 2 weeks
               </p>
@@ -570,9 +572,11 @@ const MoffeeProduct = () => {
               Experience the difference that premium ingredients make.
             </p>
             <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 sm:px-12 py-4 sm:py-5 bg-gradient-hero-button text-white text-sm sm:text-base tracking-widest uppercase rounded-full font-medium hover:opacity-90 transition-opacity shadow-lg">
-                Buy Now
-              </button>
+              <Link to="/cart">
+                <button className="px-8 sm:px-12 py-4 sm:py-5 bg-gradient-hero-button text-white text-sm sm:text-base tracking-widest uppercase rounded-full font-medium hover:opacity-90 transition-opacity shadow-lg">
+                  Buy Now
+                </button>
+              </Link>
             </div>
           </motion.div>
         </div>
