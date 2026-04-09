@@ -129,7 +129,7 @@ const Cart = () => {
                     Moffee
                   </h2>
                   <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-8">
-                    100ml spouch packet · Shelf life 2 weeks
+                    100ml spouch packet · Shelf life 1 week
                   </p>
 
                   <div className="flex items-center gap-6">
