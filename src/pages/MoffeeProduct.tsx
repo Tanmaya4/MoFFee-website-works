@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
@@ -136,8 +137,14 @@ const MoffeeProduct = () => {
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
-      {isLoading ? (
+    <>
+      <SEO 
+        title="Moffee Premium Cold Brew | Energy for the Grind"
+        description="Experience the perfect balance of bold flavor and natural energy. Moffee is a premium cold brew crafted with organic coffee, spring water, atimadhuram root, and clove."
+        path="/product/moffee"
+      />
+      <AnimatePresence mode="wait">
+        {isLoading ? (
         <motion.div
           key="skeleton"
           exit={{ opacity: 0 }}
@@ -597,6 +604,7 @@ const MoffeeProduct = () => {
         </motion.div>
       )}
     </AnimatePresence>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import StorySection from "@/components/StorySection";
@@ -48,6 +49,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Moffee | Premium Craft Beverages" 
+        description="Moffee - Premium craft beverages crafted to perfection. Discover our exquisite collection of handcrafted drinks." 
+        path="/"
+      />
       <AnimatePresence mode="wait">
         {isLoading ? (
           <motion.div

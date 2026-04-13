@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -76,8 +77,14 @@ const Collections = () => {
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
-      {isLoading ? (
+    <>
+      <SEO 
+        title="Collections | Moffee"
+        description="Explore our exquisite collection of handcrafted premium cold brew beverages designed to provide energy for your grind."
+        path="/collections"
+      />
+      <AnimatePresence mode="wait">
+        {isLoading ? (
         <motion.div
           key="skeleton"
           exit={{ opacity: 0 }}
@@ -379,6 +386,7 @@ const Collections = () => {
         </motion.div>
       )}
     </AnimatePresence>
+    </>
   );
 };
 

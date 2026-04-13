@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Minus, Plus } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -66,8 +67,14 @@ const Cart = () => {
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
-      {isLoading ? (
+    <>
+      <SEO 
+        title="Checkout | Moffee"
+        description="Complete your order for Moffee premium cold brew beverages."
+        path="/cart"
+      />
+      <AnimatePresence mode="wait">
+        {isLoading ? (
         <motion.div
           key="skeleton"
           initial={{ opacity: 1 }}
@@ -238,6 +245,7 @@ const Cart = () => {
         </motion.div>
       )}
     </AnimatePresence>
+    </>
   );
 };
 
