@@ -240,7 +240,7 @@ const MoffeeProduct = () => {
                 </button>
               </Link>
               <p className="mt-6 sm:mt-8 text-sm sm:text-base text-white/70">
-                Moffee is served in 100ml spouch packet with the shelf life of 2 weeks
+                Moffee is served in 100ml spouch packet with the shelf life of 1 week
               </p>
             </motion.div>
           </motion.div>
