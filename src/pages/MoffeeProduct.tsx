@@ -266,13 +266,13 @@ const MoffeeProduct = () => {
             </h2>
             <div className="mt-8 sm:mt-12 space-y-6 text-base sm:text-lg text-charcoal/70 leading-relaxed">
               <p>
-                The idea behind Moffee was born at home. Growing up, my mother would prepare different types of traditional kashayam using fresh leaves, roots, and healing herbs. Because of this daily ritual, I rarely fell sick — no common flu, no frequent viruses, and I can hardly remember the last time I even had a simple nose block. Along with strong immunity, it helped me grow physically healthier and stronger. This lived experience became the foundation of Moffee — a blend of ancient wisdom and everyday wellness.
+                The idea behind Moffee was born at home. Growing up, my mother would prepare different types of traditional kashayam using fresh leaves, roots, and healing herbs. Because of this daily ritual, I rarely fell sick: no common flu, no frequent viruses, and I can hardly remember the last time I even had a simple nose block. Along with strong immunity, it helped me grow physically healthier and stronger. This lived experience became the foundation of Moffee, a blend of ancient wisdom and everyday wellness.
               </p>
               <p>
-                Moffee isn't just a simple coffee — it's inspired by the ancient Indian framework of kashayam, a time-honored Ayurvedic herbal decoction that uses the healing power of liquids to support body and mind. In Ayurveda, kashayam refers to medicinal brews made by simmering herbs and spices to extract their therapeutic essence, promoting digestion, immunity, detoxification, and overall well-being. Our Moffee carries forward this holistic legacy, blending traditional wisdom with modern taste to nourish both health and spirit.
+                Moffee isn't just a simple coffee, it's inspired by the ancient Indian framework of kashayam, a time-honored Ayurvedic herbal decoction that uses the healing power of liquids to support body and mind. In Ayurveda, kashayam refers to medicinal brews made by simmering herbs and spices to extract their therapeutic essence, promoting digestion, immunity, detoxification, and overall well-being. Our Moffee carries forward this holistic legacy, blending traditional wisdom with modern taste to nourish both health and spirit.
               </p>
               <p>
-                Guided by our vision and mission, Moffee aims to take this ancient wisdom to the world — sharing the truth that true greatness often comes from the knowledge of earlier generations. Their understanding of natural healing is timeless and unparalleled, and through Moffee, we honor that legacy while making it accessible for modern lives everywhere and everyday life.
+                Guided by our vision and mission, Moffee aims to take this ancient wisdom to the world, sharing the truth that true greatness often comes from the knowledge of earlier generations. Their understanding of natural healing is timeless and unparalleled, and through Moffee, we honor that legacy while making it accessible for modern lives everywhere and everyday life.
               </p>
             </div>
           </motion.div>
