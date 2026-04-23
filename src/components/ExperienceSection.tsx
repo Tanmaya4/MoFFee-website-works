@@ -30,7 +30,7 @@ const features = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-16 sm:py-24 md:py-32 bg-cream">
+    <section id="experience" className="relative py-16 sm:py-24 md:py-32 bg-cream overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -70,6 +70,7 @@ const ExperienceSection = () => {
           ))}
         </div>
       </div>
+
     </section>
   );
 };
