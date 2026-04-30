@@ -9,15 +9,6 @@ import CollectionsSkeleton from "@/components/CollectionsSkeleton";
 
 const products = [
   {
-    id: 2,
-    name: "Golden Elixir",
-    category: "Sparkling",
-    description: "A refined sparkling beverage with hints of citrus and honey, crafted from sun-ripened fruits and artisanal honey collected from heritage apiaries.",
-    image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=1200&h=600&fit=crop",
-    details: "750ml • Limited Edition",
-    hasDetailPage: false,
-  },
-  {
     id: 3,
     name: "Velvet Rose",
     category: "Botanical",
@@ -55,8 +46,11 @@ const products = [
   },
 ];
 
+const muletiVideo = "/videos/muleti.mp4";
+
 const Collections = () => {
   const { videoRef, isReady: isVideoReady } = useVideoPreload(heroVideo, 1.75);
+  const { videoRef: muletiVideoRef, isReady: isMuletiReady } = useVideoPreload(muletiVideo, 1);
   const [isScrolledPast, setIsScrolledPast] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -208,10 +202,10 @@ const Collections = () => {
                   INTRODUCING
                 </span>
                 <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-gold">
-                  Mo<span className="italic">FF</span>ee
+                  Mo<span className="italic">FF</span>ee C
                 </h1>
                 <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-sans">
-                  Energy for the Grind
+                  <span className="underline underline-offset-4 decoration-2">Caffeine</span>
                 </p>
                 <p className="mt-8 sm:mt-12 text-sm sm:text-base md:text-lg text-white/70 font-sans max-w-2xl mx-auto">
                   Premium cold brew coffee, crafted for those who demand excellence in every sip.
@@ -246,6 +240,93 @@ const Collections = () => {
             </div>
 
             {!isVideoReady && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black">
+                <span className="text-white/70 text-xs sm:text-sm tracking-[0.3em] uppercase">
+                  Preparing video...
+                </span>
+              </div>
+            )}
+          </section>
+
+          {/* Introduction Muleti Full-Width Video Section */}
+          <section className="relative w-full h-screen overflow-hidden mt-4 sm:mt-6">
+            <div
+              className={`absolute inset-0 transition-opacity duration-500 ${
+                isMuletiReady ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <video
+                ref={muletiVideoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src={muletiVideo} type="video/mp4" />
+              </video>
+            </div>
+
+            <div
+              className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
+                isMuletiReady ? "opacity-100" : "opacity-0"
+              }`}
+            />
+
+            <div
+              className={`relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 transition-opacity duration-500 ${
+                isMuletiReady ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="max-w-4xl space-y-4 sm:space-y-6"
+              >
+                <span className="text-white text-xs sm:text-sm tracking-[0.3em] uppercase font-sans">
+                  UNVEILING
+                </span>
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-gold">
+                  Mo<span className="italic">FF</span>ee NC
+                </h1>
+                <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-sans">
+                  Non-Caffeine
+                </p>
+                <p className="mt-8 sm:mt-12 text-sm sm:text-base md:text-lg text-white/70 font-sans max-w-2xl mx-auto">
+                  All the smooth, soothing depth of Moffee — caffeine-free, crafted for calm, clean energy any time of day.
+                </p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="pt-6 sm:pt-8"
+                >
+                  <Link
+                    to="/product/moffee-nc"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-hero-button text-white text-sm font-medium tracking-widest uppercase rounded-full hover:opacity-90 transition-all shadow-lg group"
+                  >
+                    View More
+                    <svg
+                      className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {!isMuletiReady && (
               <div className="absolute inset-0 flex items-center justify-center bg-black">
                 <span className="text-white/70 text-xs sm:text-sm tracking-[0.3em] uppercase">
                   Preparing video...

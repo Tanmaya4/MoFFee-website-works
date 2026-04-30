@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Collections from "./pages/Collections";
 import MoffeeProduct from "./pages/MoffeeProduct";
+import MoffeeNCProduct from "./pages/MoffeeNCProduct";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/product/moffee" element={<MoffeeProduct />} />
+          <Route path="/product/moffee-nc" element={<MoffeeNCProduct />} />
           <Route path="/cart" element={<Cart />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
