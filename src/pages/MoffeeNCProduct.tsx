@@ -141,7 +141,7 @@ const MoffeeNCProduct = () => {
   return (
     <>
       <SEO
-        title="Moffee NC | Caffeine-Free Cold Brew"
+        title="MoFFee NC | Caffeine-Free Cold Brew"
         description="A caffeine-free Ayurvedic cold brew built around herbal roots. Calm, clean, and crafted for any moment of the day."
         path="/product/moffee-nc"
       />
@@ -243,7 +243,7 @@ const MoffeeNCProduct = () => {
                         </button>
                       </Link>
                       <p className="mt-6 sm:mt-8 text-sm sm:text-base text-white/70">
-                        Moffee NC is served in a 100ml spouch packet with a shelf life of 2 days
+                        MoFFee NC is served in a 100ml spouch packet with a shelf life of 2 days
                       </p>
                     </motion.div>
                   </motion.div>
@@ -264,23 +264,23 @@ const MoffeeNCProduct = () => {
                       The Story
                     </span>
                     <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif text-charcoal">
-                      A Quieter Side of <span className="italic">Moffee</span>
+                      A Quieter Side of <span className="italic">MoFFee</span>
                     </h2>
                     <div className="mt-8 sm:mt-12 space-y-6 text-base sm:text-lg text-charcoal/70 leading-relaxed">
                       <p>
                         Not every moment calls for caffeine. Some call for stillness: a slow evening, a
-                        cool-down after a workout, a quiet hour before sleep. Moffee NC was built for
+                        cool-down after a workout, a quiet hour before sleep. MoFFee NC was built for
                         those moments, the pause, the reset, the breath between two busy hours.
                       </p>
                       <p>
                         At its heart sits a herbal blend of sweet, soothing roots with a long-standing place
                         in Ayurvedic kitchens. Brewed slowly with cardamom, clove, and tulsi, it delivers
-                        the same craft and ritual as our original Moffee, simply without the kick. No
+                        the same craft and ritual as our original MoFFee, simply without the kick. No
                         stimulants, no shortcuts. Just a clean, herbal cold brew you can return to any
                         time of day.
                       </p>
                       <p>
-                        Moffee NC isn't a smaller version of Moffee. It's the other half of the
+                        MoFFee NC isn't a smaller version of MoFFee. It's the other half of the
                         conversation, a brew that honors rest as much as we honor energy, and proves
                         that wellness can taste as deliberate as it feels.
                       </p>
@@ -306,7 +306,7 @@ const MoffeeNCProduct = () => {
                     className="text-center mb-12 sm:mb-16"
                   >
                     <span className="text-primary text-xs sm:text-sm tracking-[0.3em] uppercase">
-                      Why Moffee NC
+                      Why MoFFee NC
                     </span>
                     <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif text-foreground">
                       Built for <span className="italic text-primary">Balance</span>
@@ -573,7 +573,7 @@ const MoffeeNCProduct = () => {
                       className="inline-flex items-center gap-3 mt-8 px-6 py-3 border-2 border-charcoal text-charcoal text-sm font-medium tracking-widest uppercase rounded-full hover:bg-charcoal hover:text-white transition-colors group"
                     >
                       <Coffee className="w-4 h-4" />
-                      Discover Moffee C
+                      Discover MoFFee C
                     </Link>
                   </motion.div>
                 </div>
@@ -614,10 +614,10 @@ const MoffeeNCProduct = () => {
                     to="/"
                     className="text-xl font-serif font-semibold tracking-wide text-gold mb-4 inline-block"
                   >
-                    MOFFEE
+                    MoFFee
                   </Link>
                   <p className="text-xs sm:text-sm text-primary-foreground/40">
-                    © 2025 Moffee. All rights reserved.
+                    © 2025 MoFFee. All rights reserved.
                   </p>
                 </div>
               </footer>

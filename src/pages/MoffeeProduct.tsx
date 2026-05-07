@@ -139,8 +139,8 @@ const MoffeeProduct = () => {
   return (
     <>
       <SEO 
-        title="Moffee Premium Cold Brew | Energy for the Grind"
-        description="Experience the perfect balance of bold flavor and natural energy. Moffee is a premium cold brew crafted with organic coffee, spring water, atimadhuram root, and clove."
+        title="MoFFee Premium Cold Brew | Energy for the Grind"
+        description="Experience the perfect balance of bold flavor and natural energy. MoFFee is a premium cold brew crafted with organic coffee, spring water, atimadhuram root, and clove."
         path="/product/moffee"
       />
       <AnimatePresence mode="wait">
@@ -240,7 +240,7 @@ const MoffeeProduct = () => {
                 </button>
               </Link>
               <p className="mt-6 sm:mt-8 text-sm sm:text-base text-white/70">
-                Moffee is served in 100ml spouch packet with the shelf life of 1 week
+                MoFFee is served in 100ml spouch packet with the shelf life of 1 week
               </p>
             </motion.div>
           </motion.div>
@@ -262,17 +262,17 @@ const MoffeeProduct = () => {
               The Story
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif text-charcoal">
-              What Makes Moffee <span className="italic">Special</span>
+              What Makes MoFFee <span className="italic">Special</span>
             </h2>
             <div className="mt-8 sm:mt-12 space-y-6 text-base sm:text-lg text-charcoal/70 leading-relaxed">
               <p>
-                The idea behind Moffee was born at home. Growing up, my mother would prepare different types of traditional kashayam using fresh leaves, roots, and healing herbs. Because of this daily ritual, I rarely fell sick: no common flu, no frequent viruses, and I can hardly remember the last time I even had a simple nose block. Along with strong immunity, it helped me grow physically healthier and stronger. This lived experience became the foundation of Moffee, a blend of ancient wisdom and everyday wellness.
+                The idea behind MoFFee was born at home. Growing up, my mother would prepare different types of traditional kashayam using fresh leaves, roots, and healing herbs. Because of this daily ritual, I rarely fell sick: no common flu, no frequent viruses, and I can hardly remember the last time I even had a simple nose block. Along with strong immunity, it helped me grow physically healthier and stronger. This lived experience became the foundation of MoFFee, a blend of ancient wisdom and everyday wellness.
               </p>
               <p>
-                Moffee isn't just a simple coffee, it's inspired by the ancient Indian framework of kashayam, a time-honored Ayurvedic herbal decoction that uses the healing power of liquids to support body and mind. In Ayurveda, kashayam refers to medicinal brews made by simmering herbs and spices to extract their therapeutic essence, promoting digestion, immunity, detoxification, and overall well-being. Our Moffee carries forward this holistic legacy, blending traditional wisdom with modern taste to nourish both health and spirit.
+                MoFFee isn't just a simple coffee, it's inspired by the ancient Indian framework of kashayam, a time-honored Ayurvedic herbal decoction that uses the healing power of liquids to support body and mind. In Ayurveda, kashayam refers to medicinal brews made by simmering herbs and spices to extract their therapeutic essence, promoting digestion, immunity, detoxification, and overall well-being. Our MoFFee carries forward this holistic legacy, blending traditional wisdom with modern taste to nourish both health and spirit.
               </p>
               <p>
-                Guided by our vision and mission, Moffee aims to take this ancient wisdom to the world, sharing the truth that true greatness often comes from the knowledge of earlier generations. Their understanding of natural healing is timeless and unparalleled, and through Moffee, we honor that legacy while making it accessible for modern lives everywhere and everyday life.
+                Guided by our vision and mission, MoFFee aims to take this ancient wisdom to the world, sharing the truth that true greatness often comes from the knowledge of earlier generations. Their understanding of natural healing is timeless and unparalleled, and through MoFFee, we honor that legacy while making it accessible for modern lives everywhere and everyday life.
               </p>
             </div>
           </motion.div>
@@ -292,7 +292,7 @@ const MoffeeProduct = () => {
             className="text-center mb-12 sm:mb-16"
           >
             <span className="text-primary text-xs sm:text-sm tracking-[0.3em] uppercase">
-              Why Moffee
+              Why MoFFee
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-serif text-foreground">
               Key <span className="italic text-primary">Benefits</span>
@@ -575,7 +575,7 @@ const MoffeeProduct = () => {
               Ready to <span className="italic text-primary">Elevate</span> Your Day?
             </h2>
             <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
-              Join thousands who have made Moffee their daily ritual. 
+              Join thousands who have made MoFFee their daily ritual.
               Experience the difference that premium ingredients make.
             </p>
             <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 justify-center">
@@ -593,10 +593,10 @@ const MoffeeProduct = () => {
       <footer className="py-8 sm:py-12 bg-charcoal text-primary-foreground">
         <div className="container mx-auto px-4 sm:px-6 text-center">
           <Link to="/" className="text-xl font-serif font-semibold tracking-wide text-gold mb-4 inline-block">
-            MOFFEE
+            MoFFee
           </Link>
           <p className="text-xs sm:text-sm text-primary-foreground/40">
-            © 2025 Moffee. All rights reserved.
+            © 2025 MoFFee. All rights reserved.
           </p>
         </div>
       </footer>

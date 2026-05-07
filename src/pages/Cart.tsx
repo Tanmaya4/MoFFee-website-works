@@ -44,7 +44,7 @@ type Product = {
 const PRODUCTS: Product[] = [
   {
     id: "moffee",
-    name: "Moffee",
+    name: "MoFFee C",
     eyebrow: "Premium Coffee",
     price: 40,
     size: "100ml",
@@ -192,8 +192,8 @@ const Cart = () => {
   return (
     <>
       <SEO
-        title="Checkout | Moffee"
-        description="Complete your order for Moffee premium cold brew beverages."
+        title="Checkout | MoFFee"
+        description="Complete your order for MoFFee premium cold brew beverages."
         path="/cart"
       />
       <AnimatePresence mode="wait">
@@ -321,7 +321,7 @@ const Cart = () => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
                     <h3 className="text-xl sm:text-2xl font-serif text-white mb-2 tracking-wide">Delivery Address</h3>
-                    <p className="text-white/50 text-sm mb-8">Where should we send your Moffee?</p>
+                    <p className="text-white/50 text-sm mb-8">Where should we send your MoFFee?</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <Input
                         label="Address Line 1"

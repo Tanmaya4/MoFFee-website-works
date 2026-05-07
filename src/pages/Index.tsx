@@ -50,8 +50,8 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO 
-        title="Moffee | Premium Craft Beverages" 
-        description="Moffee - Premium craft beverages crafted to perfection. Discover our exquisite collection of handcrafted drinks." 
+        title="MoFFee | Premium Craft Beverages"
+        description="MoFFee - Premium craft beverages crafted to perfection. Discover our exquisite collection of handcrafted drinks."
         path="/"
       />
       <AnimatePresence mode="wait">

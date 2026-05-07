@@ -73,7 +73,7 @@ const Collections = () => {
   return (
     <>
       <SEO 
-        title="Collections | Moffee"
+        title="Collections | MoFFee"
         description="Explore our exquisite collection of handcrafted premium cold brew beverages designed to provide energy for your grind."
         path="/collections"
       />
@@ -295,7 +295,7 @@ const Collections = () => {
                   Non-Caffeine
                 </p>
                 <p className="mt-8 sm:mt-12 text-sm sm:text-base md:text-lg text-white/70 font-sans max-w-2xl mx-auto">
-                  All the smooth, soothing depth of Moffee — caffeine-free, crafted for calm, clean energy any time of day.
+                  All the smooth, soothing depth of MoFFee — caffeine-free, crafted for calm, clean energy any time of day.
                 </p>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -460,7 +460,7 @@ const Collections = () => {
           <footer className="py-8 sm:py-12 bg-charcoal text-primary-foreground">
             <div className="container mx-auto px-4 sm:px-6 text-center">
               <p className="text-xs sm:text-sm text-primary-foreground/40">
-                © 2025 Moffee. All rights reserved.
+                © 2025 MoFFee. All rights reserved.
               </p>
             </div>
           </footer>

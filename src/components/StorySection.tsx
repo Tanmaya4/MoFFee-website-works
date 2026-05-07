@@ -154,15 +154,15 @@ const StorySection = () => {
               <span className="float-left mr-3 mt-1 font-serif text-5xl sm:text-6xl leading-none text-gold-light italic">
                 M
               </span>
-              offee is rooted in the South Indian tradition of kashayam, a
-              method where ingredients are gently boiled in water to draw out
-              their true essence. It's a slow, patient process that values
-              extraction over speed, allowing the ingredients to give what they
-              naturally can.
+              oFFee is rooted in the Southern Part of India, in the tradition
+              of kashayam — a method where ingredients are gently boiled in
+              water to draw out their true essence. It's a slow, patient process
+              that values extraction over speed, allowing the ingredients to
+              give what they naturally can.
             </p>
             <p className="mt-5 sm:mt-6 text-primary-foreground/75 text-base sm:text-lg leading-relaxed">
               This way of making has been practiced in Indian homes for
-              generations. Moffee carries that familiarity forward, shaped for
+              generations. MoFFee carries that familiarity forward, shaped for
               today: warm, balanced, and meant to be part of everyday routines.
             </p>
 

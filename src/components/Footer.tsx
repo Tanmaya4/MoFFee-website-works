@@ -185,8 +185,8 @@ const Footer = () => {
               </span>
             </div>
 
-            <h3 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-sans font-semibold text-white tracking-[0.15em] leading-none">
-              MOFFEE
+            <h3 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-serif text-white tracking-tight leading-none">
+              Mo<span className="italic text-gold-light">FF</span>ee
             </h3>
 
             <div className="mt-4 flex items-center gap-3" aria-hidden>
@@ -344,7 +344,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
           <p className="text-[11px] sm:text-xs tracking-wide text-primary-foreground/40">
-            © 2025 Moffee. All rights reserved.
+            © 2025 MoFFee. All rights reserved.
           </p>
 
           <p className="hidden md:block text-[11px] sm:text-xs tracking-[0.3em] uppercase text-gold-light/60 font-medium">

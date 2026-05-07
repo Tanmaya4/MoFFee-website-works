@@ -24,14 +24,13 @@ export default {
   				'serif'
   			],
   			sans: [
-  				'Inter',
-  				'ui-sans-serif',
-  				'system-ui',
-  				'sans-serif',
-  				'Apple Color Emoji',
-  				'Segoe UI Emoji',
-  				'Segoe UI Symbol',
-  				'Noto Color Emoji'
+  				'Playfair Display',
+  				'ui-serif',
+  				'Georgia',
+  				'Cambria',
+  				'Times New Roman',
+  				'Times',
+  				'serif'
   			],
   			mono: [
   				'ui-monospace',
