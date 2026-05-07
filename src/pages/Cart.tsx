@@ -5,7 +5,6 @@ import { ArrowLeft, Minus, Plus, CheckCircle2, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import heroVideo from "@/assets/pt2.mp4";
-import { createMoffeeCart, MOFFEE_VARIANT_ID } from "@/lib/shopify";
 
 const shimmer =
   "relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.5s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent";
@@ -30,6 +29,7 @@ const CartSkeleton = () => (
 );
 
 type PaymentMethod = "razorpay" | "upi";
+const MAX_PRODUCT_QUANTITY = 20;
 
 type Product = {
   id: string;
@@ -130,7 +130,7 @@ const Cart = () => {
   const [success, setSuccess] = useState<string | null>(null);
 
   const increment = (id: string) =>
-    setQuantities((q) => ({ ...q, [id]: (q[id] ?? 0) + 1 }));
+    setQuantities((q) => ({ ...q, [id]: Math.min(MAX_PRODUCT_QUANTITY, (q[id] ?? 0) + 1) }));
   const decrement = (id: string) =>
     setQuantities((q) => ({ ...q, [id]: Math.max(0, (q[id] ?? 0) - 1) }));
 
@@ -158,7 +158,7 @@ const Cart = () => {
     return Object.keys(e).length === 0;
   };
 
-  const handlePlaceOrder = async () => {
+  const handlePlaceOrder = () => {
     if (!hasItems) {
       toast.error("Add at least one item to place your order");
       return;
@@ -168,25 +168,13 @@ const Cart = () => {
       return;
     }
     setSubmitting(true);
-    try {
-      const result = await createMoffeeCart(MOFFEE_VARIANT_ID, quantity);
-      if (!result?.checkoutUrl) {
-        toast.error("Couldn't reach checkout. Please try again.");
-        setSubmitting(false);
-        return;
-      }
-      // Open Shopify's secure hosted checkout in a new tab
-      window.open(result.checkoutUrl, "_blank");
+    window.setTimeout(() => {
       setSubmitting(false);
       setSuccess(
         "MOF-" + Math.random().toString(36).slice(2, 8).toUpperCase()
       );
-      toast.success("Redirecting to secure checkout…");
-    } catch (err) {
-      console.error("Checkout failed:", err);
-      toast.error("Something went wrong. Please try again.");
-      setSubmitting(false);
-    }
+      toast.success("Order placed successfully");
+    }, 600);
   };
 
   return (

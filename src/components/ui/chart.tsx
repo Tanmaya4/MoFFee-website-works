@@ -37,7 +37,7 @@ const ChartContainer = React.forwardRef<
   }
 >(({ id, className, children, config, ...props }, ref) => {
   const uniqueId = React.useId();
-  const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
+  const chartId = `chart-${(id || uniqueId).replace(CHART_ID_REGEX, "")}`;
 
   return (
     <ChartContext.Provider value={{ config }}>
@@ -60,6 +60,7 @@ ChartContainer.displayName = "Chart";
 
 const COLOR_REGEX = /^(#[0-9a-fA-F]{3,8}|rgb\([^)]*\)|rgba\([^)]*\)|hsl\([^)]*\)|hsla\([^)]*\)|[a-zA-Z]+)$/;
 const KEY_REGEX = /^[a-zA-Z0-9_-]+$/;
+const CHART_ID_REGEX = /[^a-zA-Z0-9_-]/g;
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
