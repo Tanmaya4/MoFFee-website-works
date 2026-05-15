@@ -229,6 +229,37 @@ const Footer = () => {
                 </a>
               </div>
             </div>
+
+            {/* Scan to visit QR */}
+            <div className="mt-8 flex items-center gap-4">
+              <a
+                href="/qr-moffee.svg"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download MoFFee QR code"
+                className="block rounded-lg bg-white p-2 border border-gold/30 hover:border-gold-light transition-colors shadow-soft"
+              >
+                <img
+                  src="/qr-moffee.svg"
+                  alt="QR code linking to moffee.co.in"
+                  width={88}
+                  height={88}
+                  className="block w-20 h-20 sm:w-22 sm:h-22"
+                  loading="lazy"
+                />
+              </a>
+              <div className="flex flex-col">
+                <span className="text-[10px] sm:text-xs tracking-[0.3em] uppercase text-gold font-medium">
+                  Scan to Visit
+                </span>
+                <span className="mt-1 text-sm text-primary-foreground/65">
+                  moffee.co.in
+                </span>
+                <span className="mt-1 text-[10px] sm:text-[11px] tracking-wide text-primary-foreground/40 italic">
+                  Point your camera here
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Explore */}

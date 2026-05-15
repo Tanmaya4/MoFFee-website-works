@@ -23,22 +23,27 @@ const Header = () => {
     };
   }, []);
 
-  const navLinks = [
-    { name: "Collections", href: "/collections", isRoute: true },
-    { name: "Our Story", href: "#story", isRoute: false },
-    { name: "Experience", href: "#experience", isRoute: false },
-    { name: "Contact", href: "#contact", isRoute: false },
+  type NavLink =
+    | { name: string; href: string; kind: "route" }
+    | { name: string; href: string; kind: "anchor" }
+    | { name: string; href: string; kind: "external" };
+
+  const navLinks: NavLink[] = [
+    { name: "Collections", href: "/collections", kind: "route" },
+    { name: "Our Story", href: "#story", kind: "anchor" },
+    {
+      name: "Feedback",
+      href: "https://docs.google.com/forms/d/e/1FAIpQLScoI0zFl4LH7f-CYcHxxwz_rDpZeD3EVgLcBNPxYC0wIhAdeA/viewform?usp=header",
+      kind: "external",
+    },
+    { name: "Contact", href: "#contact", kind: "anchor" },
   ];
 
-  const handleNavClick = (link: { href: string; isRoute: boolean }) => {
+  const handleAnchorClick = (link: NavLink) => {
     setIsOpen(false);
-    if (link.isRoute) {
-      navigate(link.href);
-    } else {
-      const element = document.querySelector(link.href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+    const element = document.querySelector(link.href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -75,33 +80,40 @@ const Header = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="hidden lg:flex items-center gap-6 xl:gap-8 flex-shrink-0"
           >
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                {link.isRoute ? (
-                  <Link
-                    to={link.href}
-                    className={`text-xs xl:text-sm font-medium tracking-widest uppercase transition-colors duration-300 ${
-                      isScrolled
-                        ? "text-foreground/80 hover:text-foreground"
-                        : "text-primary-foreground/80 hover:text-primary-foreground"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                ) : (
-                  <button
-                    onClick={() => handleNavClick(link)}
-                    className={`text-xs xl:text-sm font-medium tracking-widest uppercase transition-colors duration-300 ${
-                      isScrolled
-                        ? "text-foreground/80 hover:text-foreground"
-                        : "text-primary-foreground/80 hover:text-primary-foreground"
-                    }`}
-                  >
-                    {link.name}
-                  </button>
-                )}
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const baseClass = `text-xs xl:text-sm font-medium tracking-widest uppercase transition-colors duration-300 ${
+                isScrolled
+                  ? "text-foreground/80 hover:text-foreground"
+                  : "text-primary-foreground/80 hover:text-primary-foreground"
+              }`;
+              return (
+                <li key={link.name}>
+                  {link.kind === "route" && (
+                    <Link to={link.href} className={baseClass}>
+                      {link.name}
+                    </Link>
+                  )}
+                  {link.kind === "external" && (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={baseClass}
+                    >
+                      {link.name}
+                    </a>
+                  )}
+                  {link.kind === "anchor" && (
+                    <button
+                      onClick={() => handleAnchorClick(link)}
+                      className={baseClass}
+                    >
+                      {link.name}
+                    </button>
+                  )}
+                </li>
+              );
+            })}
           </motion.ul>
 
           {/* Mobile Menu Button */}
@@ -126,26 +138,42 @@ const Header = () => {
               className="lg:hidden mt-4 overflow-hidden bg-background/95 backdrop-blur-md rounded-lg"
             >
               <ul className="flex flex-col gap-2 py-4 px-4">
-                {navLinks.map((link) => (
-                  <li key={link.name}>
-                    {link.isRoute ? (
-                      <Link
-                        to={link.href}
-                        onClick={() => setIsOpen(false)}
-                        className="block py-3 text-sm font-medium tracking-widest uppercase text-foreground/80 hover:text-foreground transition-colors"
-                      >
-                        {link.name}
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={() => handleNavClick(link)}
-                        className="block w-full text-left py-3 text-sm font-medium tracking-widest uppercase text-foreground/80 hover:text-foreground transition-colors"
-                      >
-                        {link.name}
-                      </button>
-                    )}
-                  </li>
-                ))}
+                {navLinks.map((link) => {
+                  const linkClass =
+                    "block py-3 text-sm font-medium tracking-widest uppercase text-foreground/80 hover:text-foreground transition-colors";
+                  return (
+                    <li key={link.name}>
+                      {link.kind === "route" && (
+                        <Link
+                          to={link.href}
+                          onClick={() => setIsOpen(false)}
+                          className={linkClass}
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                      {link.kind === "external" && (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsOpen(false)}
+                          className={linkClass}
+                        >
+                          {link.name}
+                        </a>
+                      )}
+                      {link.kind === "anchor" && (
+                        <button
+                          onClick={() => handleAnchorClick(link)}
+                          className={`w-full text-left ${linkClass}`}
+                        >
+                          {link.name}
+                        </button>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </motion.div>
           )}
