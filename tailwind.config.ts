@@ -16,8 +16,8 @@ export default {
   	extend: {
   		fontFamily: {
   			serif: [
+  				'Playfair Display Variable',
   				'Playfair Display',
-  				'Playfair Display Fallback',
   				'ui-serif',
   				'Georgia',
   				'Cambria',
@@ -26,8 +26,8 @@ export default {
   				'serif'
   			],
   			sans: [
+  				'Inter Variable',
   				'Inter',
-  				'Inter Fallback',
   				'ui-sans-serif',
   				'system-ui',
   				'sans-serif',
