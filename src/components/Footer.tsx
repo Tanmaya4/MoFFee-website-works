@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Instagram, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Instagram, Mail, MapPin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Bloomed lotus — side profile with layered petals + stamens
@@ -304,24 +304,27 @@ const Footer = () => {
                 <span>India</span>
               </p>
               <a
-                href="mailto:dhtanmaya@gmail.com"
-                className="flex items-start gap-2.5 hover:text-gold-light transition-colors"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfe18BmkqWxAGFp_pFXbE7Ovsp47pHyuzZmGTngVtnX5C3qIw/viewform?usp=publish-editor"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/contact inline-flex items-center gap-2.5 text-gold-light hover:text-gold transition-colors"
+                aria-label="Contact us — opens a Google Form in a new tab"
               >
                 <Mail
                   size={14}
-                  className="mt-0.5 text-gold-light/80 shrink-0"
+                  className="mt-0.5 text-gold-light/80 shrink-0 transition-colors group-hover/contact:text-gold"
                 />
-                <span className="break-all">dhtanmaya@gmail.com</span>
-              </a>
-              <a
-                href="tel:+919650590176"
-                className="flex items-start gap-2.5 hover:text-gold-light transition-colors"
-              >
-                <Phone
-                  size={14}
-                  className="mt-0.5 text-gold-light/80 shrink-0"
+                <span className="relative tracking-wide">
+                  Contact Us
+                  <span
+                    aria-hidden
+                    className="absolute left-0 -bottom-0.5 h-px w-full origin-left bg-gold-light/70 transition-transform duration-300 ease-out group-hover/contact:scale-x-100 scale-x-100"
+                  />
+                </span>
+                <ArrowRight
+                  size={12}
+                  className="shrink-0 -translate-x-1 opacity-0 transition-all duration-300 group-hover/contact:translate-x-0 group-hover/contact:opacity-100"
                 />
-                <span>+91 96505 90176</span>
               </a>
             </address>
           </div>
