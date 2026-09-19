@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { SEO } from "@/components/SEO";
+import { PAGES } from "@/seo/site";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
@@ -27,26 +28,26 @@ const benefits = [
     title: "Natural Energy Boost",
     description:
       "Sustained energy without the crash, powered by natural caffeine and adaptogens. Solves tiredness, brain fog, work fatigue.",
-    bgImage: "/images/face.png"
+    bgImage: "/images/face.webp"
   },
   {
     icon: Worm,
     title: "Gut Parasite Killer",
     description: "Eliminates harmful intestinal worms and supports a healthier digestive system.",
-    bgImage: "/images/worm.png"
+    bgImage: "/images/worm.webp"
   },
   {
     icon: ShieldPlus,
     title: "Strengthens immunity",
     description:
       "Fights everyday infections. Solves frequent colds, weak immunity, pollution impact.",
-    bgImage: "/images/viruses.png"
+    bgImage: "/images/viruses.webp"
   },
   {
     icon: Stethoscope,
     title: "Aids in digestion",
     description: "Fixes digestion, acidity & bloating naturally, gas, heartburn, heavy stomach after meals",
-    bgImage: "/images/stomach.png"
+    bgImage: "/images/stomach.webp"
   }
 ];
 
@@ -138,11 +139,7 @@ const MoffeeProduct = () => {
 
   return (
     <>
-      <SEO 
-        title="MoFFee Premium Cold Brew | Energy for the Grind"
-        description="Experience the perfect balance of bold flavor and natural energy. MoFFee is a premium cold brew crafted with organic coffee, spring water, atimadhuram root, and clove."
-        path="/product/moffee"
-      />
+      <SEO {...PAGES.moffee} />
       <AnimatePresence mode="wait">
         {isLoading ? (
         <motion.div
@@ -552,7 +549,11 @@ const MoffeeProduct = () => {
               >
                 <img
                   src={page}
-                  alt={`Test Report Page ${index + 1}`}
+                  alt={`MoFFee C NABL-accredited lab test report, page ${index + 1}`}
+                  width={1236}
+                  height={1600}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto"
                 />
               </motion.div>

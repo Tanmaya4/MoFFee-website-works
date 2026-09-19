@@ -1,32 +1,15 @@
 import { Helmet } from 'react-helmet-async';
+import { buildHeadTags } from '@/seo/head';
+import type { PageMeta } from '@/seo/site';
 
-interface SEOProps {
-  title: string;
-  description: string;
-  type?: string;
-  path?: string;
-}
-
-export function SEO({ title, description, type = 'website', path = '' }: SEOProps) {
-  const url = `https://moffee.co.in${path}`;
-
+/** Page metadata lives in src/seo/site.ts; pages render <SEO {...PAGES.somePage} />. */
+export function SEO(page: PageMeta) {
   return (
     <Helmet>
-      {/* Standard metadata tags */}
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
-
-      {/* Open Graph tags for Facebook, LinkedIn etc */}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
-
-      {/* Twitter tags */}
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:url" content={url} />
+      <title>{page.title}</title>
+      {buildHeadTags(page).map(({ tag: Tag, attrs }) => (
+        <Tag key={attrs.name ?? attrs.property ?? attrs.rel} {...attrs} />
+      ))}
     </Helmet>
   );
 }

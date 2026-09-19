@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { SEO } from "@/components/SEO";
+import { PAGES } from "@/seo/site";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,
@@ -27,28 +28,28 @@ const benefits = [
     title: "Calm, Steady Energy",
     description:
       "A grounded lift without caffeine jitters or crashes. Clarity that comes from balance, not stimulation.",
-    bgImage: "/images/face.png",
+    bgImage: "/images/face.webp",
   },
   {
     icon: HeartPulse,
     title: "Soothes Throat & Digestion",
     description:
       "Herbal roots have been used for centuries to ease the throat, calm acidity, and support a happy gut.",
-    bgImage: "/images/stomach.png",
+    bgImage: "/images/stomach.webp",
   },
   {
     icon: Sparkles,
     title: "Adaptogenic Wellness",
     description:
       "An Ayurvedic infusion that gently helps the body manage everyday stress and stay in rhythm.",
-    bgImage: "/images/viruses.png",
+    bgImage: "/images/viruses.webp",
   },
   {
     icon: Activity,
     title: "Controls Cholesterol",
     description:
       "Time-honored herbal roots that support healthy cholesterol levels and steady cardiovascular balance with daily use.",
-    bgImage: "/images/control-cholesterol.png",
+    bgImage: "/images/control-cholesterol.webp",
   },
 ];
 
@@ -140,11 +141,7 @@ const MoffeeNCProduct = () => {
 
   return (
     <>
-      <SEO
-        title="MoFFee NC | Caffeine-Free Cold Brew"
-        description="A caffeine-free Ayurvedic cold brew built around herbal roots. Calm, clean, and crafted for any moment of the day."
-        path="/product/moffee-nc"
-      />
+      <SEO {...PAGES.moffeeNc} />
       <AnimatePresence mode="wait">
         {isLoading ? (
           <motion.div

@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { SEO } from "@/components/SEO";
+import { PAGES } from "@/seo/site";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -72,11 +73,7 @@ const Collections = () => {
 
   return (
     <>
-      <SEO 
-        title="Collections | MoFFee"
-        description="Explore our exquisite collection of handcrafted premium cold brew beverages designed to provide energy for your grind."
-        path="/collections"
-      />
+      <SEO {...PAGES.collections} />
       <AnimatePresence mode="wait">
         {isLoading ? (
         <motion.div
@@ -201,9 +198,9 @@ const Collections = () => {
                 <span className="text-white text-xs sm:text-sm tracking-[0.3em] uppercase font-sans">
                   INTRODUCING
                 </span>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-gold">
+                <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-gold">
                   Mo<span className="italic">FF</span>ee C
-                </h1>
+                </h2>
                 <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-sans">
                   <span className="underline underline-offset-4 decoration-2">Caffeine</span>
                 </p>
@@ -288,9 +285,9 @@ const Collections = () => {
                 <span className="text-white text-xs sm:text-sm tracking-[0.3em] uppercase font-sans">
                   UNVEILING
                 </span>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-gold">
+                <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-gold">
                   Mo<span className="italic">FF</span>ee NC
-                </h1>
+                </h2>
                 <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-sans">
                   Non-Caffeine
                 </p>

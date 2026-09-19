@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { SEO } from "@/components/SEO";
+import { PAGES } from "@/seo/site";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Minus, Plus, CheckCircle2, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -179,11 +180,7 @@ const Cart = () => {
 
   return (
     <>
-      <SEO
-        title="Checkout | MoFFee"
-        description="Complete your order for MoFFee premium cold brew beverages."
-        path="/cart"
-      />
+      <SEO {...PAGES.cart} />
       <AnimatePresence mode="wait">
         {isLoading ? (
           <motion.div key="skeleton" initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>

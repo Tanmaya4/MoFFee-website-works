@@ -1,4 +1,13 @@
 {
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.moffee.co.in" }],
+      "destination": "https://moffee.co.in/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -31,10 +40,13 @@
     }
   ],
   "rewrites": [
+    { "source": "/collections", "destination": "/collections/index.html" },
+    { "source": "/product/moffee", "destination": "/product/moffee/index.html" },
+    { "source": "/product/moffee-nc", "destination": "/product/moffee-nc/index.html" },
+    { "source": "/cart", "destination": "/cart/index.html" },
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
 }
-

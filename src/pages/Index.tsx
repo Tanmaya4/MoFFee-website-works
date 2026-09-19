@@ -5,7 +5,9 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import StorySection from "@/components/StorySection";
 import ExperienceSection from "@/components/ExperienceSection";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
+import { PAGES } from "@/seo/site";
 
 const shimmer =
   "relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_1.5s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent";
@@ -49,11 +51,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <SEO 
-        title="MoFFee | Premium Craft Beverages"
-        description="MoFFee - Premium craft beverages crafted to perfection. Discover our exquisite collection of handcrafted drinks."
-        path="/"
-      />
+      <SEO {...PAGES.home} />
       <AnimatePresence mode="wait">
         {isLoading ? (
           <motion.div
@@ -74,6 +72,7 @@ const Index = () => {
             <HeroSection />
             <StorySection />
             <ExperienceSection />
+            <FAQSection />
             <Footer />
           </motion.div>
         )}

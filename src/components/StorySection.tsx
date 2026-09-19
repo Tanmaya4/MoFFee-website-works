@@ -47,7 +47,7 @@ const StorySection = () => {
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-no-repeat bg-cover bg-center opacity-90 mix-blend-screen"
         style={{
-          backgroundImage: "url('/images/story-doodles-bg.png')",
+          backgroundImage: "url('/images/story-doodles-bg.webp')",
         }}
       />
 
@@ -208,9 +208,14 @@ const StorySection = () => {
               {/* Image frame */}
               <div className="relative rounded-lg overflow-hidden ring-1 ring-gold/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
                 <img
-                  src="/images/kashayam.jpeg"
-                  alt="Kashayam"
+                  src="/images/kashayam.webp"
+                  srcSet="/images/kashayam-600.webp 600w, /images/kashayam.webp 1200w"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  alt="The slow-boil kashayam process behind MoFFee: sustainably sourced ingredients, slow-boil extraction, straining, and a handcrafted balanced beverage"
+                  width={1200}
+                  height={1200}
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover max-w-full transition-transform duration-[1200ms] ease-out hover:scale-[1.03]"
                 />
                 {/* Subtle vignette */}
